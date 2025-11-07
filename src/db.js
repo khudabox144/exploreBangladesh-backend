@@ -1,5 +1,6 @@
-// src/db.js
-import { PrismaClient } from './generated/client/index.js'; // './' because db.js is inside src/
+// src/db.js - FIXED
+import { PrismaClient } from '@prisma/client';
+
 const prisma = new PrismaClient();
 
 // Graceful shutdown

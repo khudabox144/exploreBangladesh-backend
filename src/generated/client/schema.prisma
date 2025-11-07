@@ -1,3 +1,13 @@
+model TourPlaceReview {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  tourPlace   TourPlace @relation(fields: [tourPlaceId], references: [id])
+  tourPlaceId Int
+  rating      Int
+  comment     String?
+  createdAt   DateTime  @default(now())
+}
+
 // ✅ CORRECTED prisma/schema.prisma CONTENT ✅
 
 // This is your Prisma schema file,
@@ -138,4 +148,30 @@ model Review {
   title     String?
   text      String?
   createdAt DateTime @default(now())
+}
+
+// Bangladesh Destinations
+model Division {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  districts District[]
+}
+
+model District {
+  id         Int         @id @default(autoincrement())
+  name       String
+  division   Division    @relation(fields: [divisionId], references: [id])
+  divisionId Int
+  tourPlaces TourPlace[]
+}
+
+model TourPlace {
+  id               Int               @id @default(autoincrement())
+  name             String
+  description      String?
+  imageUrl         String?
+  district         District          @relation(fields: [districtId], references: [id])
+  districtId       Int
+  addedBy          Int?
+  tourPlaceReviews TourPlaceReview[]
 }

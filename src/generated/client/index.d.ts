@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model TourPlaceReview
+ * 
+ */
+export type TourPlaceReview = $Result.DefaultSelection<Prisma.$TourPlaceReviewPayload>
+/**
  * Model User
  * 
  */
@@ -63,6 +68,21 @@ export type Booking = $Result.DefaultSelection<Prisma.$BookingPayload>
  * 
  */
 export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
+/**
+ * Model Division
+ * 
+ */
+export type Division = $Result.DefaultSelection<Prisma.$DivisionPayload>
+/**
+ * Model District
+ * 
+ */
+export type District = $Result.DefaultSelection<Prisma.$DistrictPayload>
+/**
+ * Model TourPlace
+ * 
+ */
+export type TourPlace = $Result.DefaultSelection<Prisma.$TourPlacePayload>
 
 /**
  * Enums
@@ -89,8 +109,8 @@ export const BookingStatus: typeof $Enums.BookingStatus
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more TourPlaceReviews
+ * const tourPlaceReviews = await prisma.tourPlaceReview.findMany()
  * ```
  *
  *
@@ -110,8 +130,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more TourPlaceReviews
+   * const tourPlaceReviews = await prisma.tourPlaceReview.findMany()
    * ```
    *
    *
@@ -201,6 +221,16 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.tourPlaceReview`: Exposes CRUD operations for the **TourPlaceReview** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TourPlaceReviews
+    * const tourPlaceReviews = await prisma.tourPlaceReview.findMany()
+    * ```
+    */
+  get tourPlaceReview(): Prisma.TourPlaceReviewDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -299,6 +329,36 @@ export class PrismaClient<
     * ```
     */
   get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.division`: Exposes CRUD operations for the **Division** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Divisions
+    * const divisions = await prisma.division.findMany()
+    * ```
+    */
+  get division(): Prisma.DivisionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.district`: Exposes CRUD operations for the **District** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Districts
+    * const districts = await prisma.district.findMany()
+    * ```
+    */
+  get district(): Prisma.DistrictDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tourPlace`: Exposes CRUD operations for the **TourPlace** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TourPlaces
+    * const tourPlaces = await prisma.tourPlace.findMany()
+    * ```
+    */
+  get tourPlace(): Prisma.TourPlaceDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -740,6 +800,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    TourPlaceReview: 'TourPlaceReview',
     User: 'User',
     Operator: 'Operator',
     Location: 'Location',
@@ -749,7 +810,10 @@ export namespace Prisma {
     PriceOption: 'PriceOption',
     Image: 'Image',
     Booking: 'Booking',
-    Review: 'Review'
+    Review: 'Review',
+    Division: 'Division',
+    District: 'District',
+    TourPlace: 'TourPlace'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -768,10 +832,84 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "operator" | "location" | "category" | "tour" | "itineraryItem" | "priceOption" | "image" | "booking" | "review"
+      modelProps: "tourPlaceReview" | "user" | "operator" | "location" | "category" | "tour" | "itineraryItem" | "priceOption" | "image" | "booking" | "review" | "division" | "district" | "tourPlace"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      TourPlaceReview: {
+        payload: Prisma.$TourPlaceReviewPayload<ExtArgs>
+        fields: Prisma.TourPlaceReviewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TourPlaceReviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TourPlaceReviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>
+          }
+          findFirst: {
+            args: Prisma.TourPlaceReviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TourPlaceReviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>
+          }
+          findMany: {
+            args: Prisma.TourPlaceReviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>[]
+          }
+          create: {
+            args: Prisma.TourPlaceReviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>
+          }
+          createMany: {
+            args: Prisma.TourPlaceReviewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TourPlaceReviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>[]
+          }
+          delete: {
+            args: Prisma.TourPlaceReviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>
+          }
+          update: {
+            args: Prisma.TourPlaceReviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>
+          }
+          deleteMany: {
+            args: Prisma.TourPlaceReviewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TourPlaceReviewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TourPlaceReviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>[]
+          }
+          upsert: {
+            args: Prisma.TourPlaceReviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlaceReviewPayload>
+          }
+          aggregate: {
+            args: Prisma.TourPlaceReviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTourPlaceReview>
+          }
+          groupBy: {
+            args: Prisma.TourPlaceReviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TourPlaceReviewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TourPlaceReviewCountArgs<ExtArgs>
+            result: $Utils.Optional<TourPlaceReviewCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -1512,6 +1650,228 @@ export namespace Prisma {
           }
         }
       }
+      Division: {
+        payload: Prisma.$DivisionPayload<ExtArgs>
+        fields: Prisma.DivisionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DivisionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DivisionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>
+          }
+          findFirst: {
+            args: Prisma.DivisionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DivisionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>
+          }
+          findMany: {
+            args: Prisma.DivisionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>[]
+          }
+          create: {
+            args: Prisma.DivisionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>
+          }
+          createMany: {
+            args: Prisma.DivisionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DivisionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>[]
+          }
+          delete: {
+            args: Prisma.DivisionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>
+          }
+          update: {
+            args: Prisma.DivisionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>
+          }
+          deleteMany: {
+            args: Prisma.DivisionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DivisionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DivisionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>[]
+          }
+          upsert: {
+            args: Prisma.DivisionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DivisionPayload>
+          }
+          aggregate: {
+            args: Prisma.DivisionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDivision>
+          }
+          groupBy: {
+            args: Prisma.DivisionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DivisionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DivisionCountArgs<ExtArgs>
+            result: $Utils.Optional<DivisionCountAggregateOutputType> | number
+          }
+        }
+      }
+      District: {
+        payload: Prisma.$DistrictPayload<ExtArgs>
+        fields: Prisma.DistrictFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DistrictFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DistrictFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>
+          }
+          findFirst: {
+            args: Prisma.DistrictFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DistrictFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>
+          }
+          findMany: {
+            args: Prisma.DistrictFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>[]
+          }
+          create: {
+            args: Prisma.DistrictCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>
+          }
+          createMany: {
+            args: Prisma.DistrictCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DistrictCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>[]
+          }
+          delete: {
+            args: Prisma.DistrictDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>
+          }
+          update: {
+            args: Prisma.DistrictUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>
+          }
+          deleteMany: {
+            args: Prisma.DistrictDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DistrictUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DistrictUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>[]
+          }
+          upsert: {
+            args: Prisma.DistrictUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DistrictPayload>
+          }
+          aggregate: {
+            args: Prisma.DistrictAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDistrict>
+          }
+          groupBy: {
+            args: Prisma.DistrictGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DistrictGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DistrictCountArgs<ExtArgs>
+            result: $Utils.Optional<DistrictCountAggregateOutputType> | number
+          }
+        }
+      }
+      TourPlace: {
+        payload: Prisma.$TourPlacePayload<ExtArgs>
+        fields: Prisma.TourPlaceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TourPlaceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TourPlaceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>
+          }
+          findFirst: {
+            args: Prisma.TourPlaceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TourPlaceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>
+          }
+          findMany: {
+            args: Prisma.TourPlaceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>[]
+          }
+          create: {
+            args: Prisma.TourPlaceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>
+          }
+          createMany: {
+            args: Prisma.TourPlaceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TourPlaceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>[]
+          }
+          delete: {
+            args: Prisma.TourPlaceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>
+          }
+          update: {
+            args: Prisma.TourPlaceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>
+          }
+          deleteMany: {
+            args: Prisma.TourPlaceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TourPlaceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TourPlaceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>[]
+          }
+          upsert: {
+            args: Prisma.TourPlaceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TourPlacePayload>
+          }
+          aggregate: {
+            args: Prisma.TourPlaceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTourPlace>
+          }
+          groupBy: {
+            args: Prisma.TourPlaceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TourPlaceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TourPlaceCountArgs<ExtArgs>
+            result: $Utils.Optional<TourPlaceCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1608,6 +1968,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    tourPlaceReview?: TourPlaceReviewOmit
     user?: UserOmit
     operator?: OperatorOmit
     location?: LocationOmit
@@ -1618,6 +1979,9 @@ export namespace Prisma {
     image?: ImageOmit
     booking?: BookingOmit
     review?: ReviewOmit
+    division?: DivisionOmit
+    district?: DistrictOmit
+    tourPlace?: TourPlaceOmit
   }
 
   /* Types for Logging */
@@ -1903,8 +2267,1218 @@ export namespace Prisma {
 
 
   /**
+   * Count Type DivisionCountOutputType
+   */
+
+  export type DivisionCountOutputType = {
+    districts: number
+  }
+
+  export type DivisionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    districts?: boolean | DivisionCountOutputTypeCountDistrictsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DivisionCountOutputType without action
+   */
+  export type DivisionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DivisionCountOutputType
+     */
+    select?: DivisionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DivisionCountOutputType without action
+   */
+  export type DivisionCountOutputTypeCountDistrictsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DistrictWhereInput
+  }
+
+
+  /**
+   * Count Type DistrictCountOutputType
+   */
+
+  export type DistrictCountOutputType = {
+    tourPlaces: number
+  }
+
+  export type DistrictCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tourPlaces?: boolean | DistrictCountOutputTypeCountTourPlacesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DistrictCountOutputType without action
+   */
+  export type DistrictCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DistrictCountOutputType
+     */
+    select?: DistrictCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DistrictCountOutputType without action
+   */
+  export type DistrictCountOutputTypeCountTourPlacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TourPlaceWhereInput
+  }
+
+
+  /**
+   * Count Type TourPlaceCountOutputType
+   */
+
+  export type TourPlaceCountOutputType = {
+    tourPlaceReviews: number
+  }
+
+  export type TourPlaceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tourPlaceReviews?: boolean | TourPlaceCountOutputTypeCountTourPlaceReviewsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TourPlaceCountOutputType without action
+   */
+  export type TourPlaceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceCountOutputType
+     */
+    select?: TourPlaceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TourPlaceCountOutputType without action
+   */
+  export type TourPlaceCountOutputTypeCountTourPlaceReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TourPlaceReviewWhereInput
+  }
+
+
+  /**
    * Models
    */
+
+  /**
+   * Model TourPlaceReview
+   */
+
+  export type AggregateTourPlaceReview = {
+    _count: TourPlaceReviewCountAggregateOutputType | null
+    _avg: TourPlaceReviewAvgAggregateOutputType | null
+    _sum: TourPlaceReviewSumAggregateOutputType | null
+    _min: TourPlaceReviewMinAggregateOutputType | null
+    _max: TourPlaceReviewMaxAggregateOutputType | null
+  }
+
+  export type TourPlaceReviewAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    tourPlaceId: number | null
+    rating: number | null
+  }
+
+  export type TourPlaceReviewSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    tourPlaceId: number | null
+    rating: number | null
+  }
+
+  export type TourPlaceReviewMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    tourPlaceId: number | null
+    rating: number | null
+    comment: string | null
+    createdAt: Date | null
+  }
+
+  export type TourPlaceReviewMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    tourPlaceId: number | null
+    rating: number | null
+    comment: string | null
+    createdAt: Date | null
+  }
+
+  export type TourPlaceReviewCountAggregateOutputType = {
+    id: number
+    userId: number
+    tourPlaceId: number
+    rating: number
+    comment: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TourPlaceReviewAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    tourPlaceId?: true
+    rating?: true
+  }
+
+  export type TourPlaceReviewSumAggregateInputType = {
+    id?: true
+    userId?: true
+    tourPlaceId?: true
+    rating?: true
+  }
+
+  export type TourPlaceReviewMinAggregateInputType = {
+    id?: true
+    userId?: true
+    tourPlaceId?: true
+    rating?: true
+    comment?: true
+    createdAt?: true
+  }
+
+  export type TourPlaceReviewMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    tourPlaceId?: true
+    rating?: true
+    comment?: true
+    createdAt?: true
+  }
+
+  export type TourPlaceReviewCountAggregateInputType = {
+    id?: true
+    userId?: true
+    tourPlaceId?: true
+    rating?: true
+    comment?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TourPlaceReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TourPlaceReview to aggregate.
+     */
+    where?: TourPlaceReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TourPlaceReviews to fetch.
+     */
+    orderBy?: TourPlaceReviewOrderByWithRelationInput | TourPlaceReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TourPlaceReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TourPlaceReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TourPlaceReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TourPlaceReviews
+    **/
+    _count?: true | TourPlaceReviewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TourPlaceReviewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TourPlaceReviewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TourPlaceReviewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TourPlaceReviewMaxAggregateInputType
+  }
+
+  export type GetTourPlaceReviewAggregateType<T extends TourPlaceReviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateTourPlaceReview]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTourPlaceReview[P]>
+      : GetScalarType<T[P], AggregateTourPlaceReview[P]>
+  }
+
+
+
+
+  export type TourPlaceReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TourPlaceReviewWhereInput
+    orderBy?: TourPlaceReviewOrderByWithAggregationInput | TourPlaceReviewOrderByWithAggregationInput[]
+    by: TourPlaceReviewScalarFieldEnum[] | TourPlaceReviewScalarFieldEnum
+    having?: TourPlaceReviewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TourPlaceReviewCountAggregateInputType | true
+    _avg?: TourPlaceReviewAvgAggregateInputType
+    _sum?: TourPlaceReviewSumAggregateInputType
+    _min?: TourPlaceReviewMinAggregateInputType
+    _max?: TourPlaceReviewMaxAggregateInputType
+  }
+
+  export type TourPlaceReviewGroupByOutputType = {
+    id: number
+    userId: number
+    tourPlaceId: number
+    rating: number
+    comment: string | null
+    createdAt: Date
+    _count: TourPlaceReviewCountAggregateOutputType | null
+    _avg: TourPlaceReviewAvgAggregateOutputType | null
+    _sum: TourPlaceReviewSumAggregateOutputType | null
+    _min: TourPlaceReviewMinAggregateOutputType | null
+    _max: TourPlaceReviewMaxAggregateOutputType | null
+  }
+
+  type GetTourPlaceReviewGroupByPayload<T extends TourPlaceReviewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TourPlaceReviewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TourPlaceReviewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TourPlaceReviewGroupByOutputType[P]>
+            : GetScalarType<T[P], TourPlaceReviewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TourPlaceReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tourPlaceId?: boolean
+    rating?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    tourPlace?: boolean | TourPlaceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tourPlaceReview"]>
+
+  export type TourPlaceReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tourPlaceId?: boolean
+    rating?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    tourPlace?: boolean | TourPlaceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tourPlaceReview"]>
+
+  export type TourPlaceReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tourPlaceId?: boolean
+    rating?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    tourPlace?: boolean | TourPlaceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tourPlaceReview"]>
+
+  export type TourPlaceReviewSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    tourPlaceId?: boolean
+    rating?: boolean
+    comment?: boolean
+    createdAt?: boolean
+  }
+
+  export type TourPlaceReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "tourPlaceId" | "rating" | "comment" | "createdAt", ExtArgs["result"]["tourPlaceReview"]>
+  export type TourPlaceReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tourPlace?: boolean | TourPlaceDefaultArgs<ExtArgs>
+  }
+  export type TourPlaceReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tourPlace?: boolean | TourPlaceDefaultArgs<ExtArgs>
+  }
+  export type TourPlaceReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tourPlace?: boolean | TourPlaceDefaultArgs<ExtArgs>
+  }
+
+  export type $TourPlaceReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TourPlaceReview"
+    objects: {
+      tourPlace: Prisma.$TourPlacePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      tourPlaceId: number
+      rating: number
+      comment: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["tourPlaceReview"]>
+    composites: {}
+  }
+
+  type TourPlaceReviewGetPayload<S extends boolean | null | undefined | TourPlaceReviewDefaultArgs> = $Result.GetResult<Prisma.$TourPlaceReviewPayload, S>
+
+  type TourPlaceReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TourPlaceReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TourPlaceReviewCountAggregateInputType | true
+    }
+
+  export interface TourPlaceReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TourPlaceReview'], meta: { name: 'TourPlaceReview' } }
+    /**
+     * Find zero or one TourPlaceReview that matches the filter.
+     * @param {TourPlaceReviewFindUniqueArgs} args - Arguments to find a TourPlaceReview
+     * @example
+     * // Get one TourPlaceReview
+     * const tourPlaceReview = await prisma.tourPlaceReview.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TourPlaceReviewFindUniqueArgs>(args: SelectSubset<T, TourPlaceReviewFindUniqueArgs<ExtArgs>>): Prisma__TourPlaceReviewClient<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TourPlaceReview that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TourPlaceReviewFindUniqueOrThrowArgs} args - Arguments to find a TourPlaceReview
+     * @example
+     * // Get one TourPlaceReview
+     * const tourPlaceReview = await prisma.tourPlaceReview.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TourPlaceReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, TourPlaceReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TourPlaceReviewClient<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TourPlaceReview that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceReviewFindFirstArgs} args - Arguments to find a TourPlaceReview
+     * @example
+     * // Get one TourPlaceReview
+     * const tourPlaceReview = await prisma.tourPlaceReview.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TourPlaceReviewFindFirstArgs>(args?: SelectSubset<T, TourPlaceReviewFindFirstArgs<ExtArgs>>): Prisma__TourPlaceReviewClient<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TourPlaceReview that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceReviewFindFirstOrThrowArgs} args - Arguments to find a TourPlaceReview
+     * @example
+     * // Get one TourPlaceReview
+     * const tourPlaceReview = await prisma.tourPlaceReview.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TourPlaceReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, TourPlaceReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__TourPlaceReviewClient<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TourPlaceReviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceReviewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TourPlaceReviews
+     * const tourPlaceReviews = await prisma.tourPlaceReview.findMany()
+     * 
+     * // Get first 10 TourPlaceReviews
+     * const tourPlaceReviews = await prisma.tourPlaceReview.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tourPlaceReviewWithIdOnly = await prisma.tourPlaceReview.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TourPlaceReviewFindManyArgs>(args?: SelectSubset<T, TourPlaceReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TourPlaceReview.
+     * @param {TourPlaceReviewCreateArgs} args - Arguments to create a TourPlaceReview.
+     * @example
+     * // Create one TourPlaceReview
+     * const TourPlaceReview = await prisma.tourPlaceReview.create({
+     *   data: {
+     *     // ... data to create a TourPlaceReview
+     *   }
+     * })
+     * 
+     */
+    create<T extends TourPlaceReviewCreateArgs>(args: SelectSubset<T, TourPlaceReviewCreateArgs<ExtArgs>>): Prisma__TourPlaceReviewClient<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TourPlaceReviews.
+     * @param {TourPlaceReviewCreateManyArgs} args - Arguments to create many TourPlaceReviews.
+     * @example
+     * // Create many TourPlaceReviews
+     * const tourPlaceReview = await prisma.tourPlaceReview.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TourPlaceReviewCreateManyArgs>(args?: SelectSubset<T, TourPlaceReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TourPlaceReviews and returns the data saved in the database.
+     * @param {TourPlaceReviewCreateManyAndReturnArgs} args - Arguments to create many TourPlaceReviews.
+     * @example
+     * // Create many TourPlaceReviews
+     * const tourPlaceReview = await prisma.tourPlaceReview.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TourPlaceReviews and only return the `id`
+     * const tourPlaceReviewWithIdOnly = await prisma.tourPlaceReview.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TourPlaceReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, TourPlaceReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TourPlaceReview.
+     * @param {TourPlaceReviewDeleteArgs} args - Arguments to delete one TourPlaceReview.
+     * @example
+     * // Delete one TourPlaceReview
+     * const TourPlaceReview = await prisma.tourPlaceReview.delete({
+     *   where: {
+     *     // ... filter to delete one TourPlaceReview
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TourPlaceReviewDeleteArgs>(args: SelectSubset<T, TourPlaceReviewDeleteArgs<ExtArgs>>): Prisma__TourPlaceReviewClient<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TourPlaceReview.
+     * @param {TourPlaceReviewUpdateArgs} args - Arguments to update one TourPlaceReview.
+     * @example
+     * // Update one TourPlaceReview
+     * const tourPlaceReview = await prisma.tourPlaceReview.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TourPlaceReviewUpdateArgs>(args: SelectSubset<T, TourPlaceReviewUpdateArgs<ExtArgs>>): Prisma__TourPlaceReviewClient<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TourPlaceReviews.
+     * @param {TourPlaceReviewDeleteManyArgs} args - Arguments to filter TourPlaceReviews to delete.
+     * @example
+     * // Delete a few TourPlaceReviews
+     * const { count } = await prisma.tourPlaceReview.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TourPlaceReviewDeleteManyArgs>(args?: SelectSubset<T, TourPlaceReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TourPlaceReviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceReviewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TourPlaceReviews
+     * const tourPlaceReview = await prisma.tourPlaceReview.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TourPlaceReviewUpdateManyArgs>(args: SelectSubset<T, TourPlaceReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TourPlaceReviews and returns the data updated in the database.
+     * @param {TourPlaceReviewUpdateManyAndReturnArgs} args - Arguments to update many TourPlaceReviews.
+     * @example
+     * // Update many TourPlaceReviews
+     * const tourPlaceReview = await prisma.tourPlaceReview.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TourPlaceReviews and only return the `id`
+     * const tourPlaceReviewWithIdOnly = await prisma.tourPlaceReview.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TourPlaceReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, TourPlaceReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TourPlaceReview.
+     * @param {TourPlaceReviewUpsertArgs} args - Arguments to update or create a TourPlaceReview.
+     * @example
+     * // Update or create a TourPlaceReview
+     * const tourPlaceReview = await prisma.tourPlaceReview.upsert({
+     *   create: {
+     *     // ... data to create a TourPlaceReview
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TourPlaceReview we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TourPlaceReviewUpsertArgs>(args: SelectSubset<T, TourPlaceReviewUpsertArgs<ExtArgs>>): Prisma__TourPlaceReviewClient<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TourPlaceReviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceReviewCountArgs} args - Arguments to filter TourPlaceReviews to count.
+     * @example
+     * // Count the number of TourPlaceReviews
+     * const count = await prisma.tourPlaceReview.count({
+     *   where: {
+     *     // ... the filter for the TourPlaceReviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends TourPlaceReviewCountArgs>(
+      args?: Subset<T, TourPlaceReviewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TourPlaceReviewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TourPlaceReview.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TourPlaceReviewAggregateArgs>(args: Subset<T, TourPlaceReviewAggregateArgs>): Prisma.PrismaPromise<GetTourPlaceReviewAggregateType<T>>
+
+    /**
+     * Group by TourPlaceReview.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceReviewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TourPlaceReviewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TourPlaceReviewGroupByArgs['orderBy'] }
+        : { orderBy?: TourPlaceReviewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TourPlaceReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTourPlaceReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TourPlaceReview model
+   */
+  readonly fields: TourPlaceReviewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TourPlaceReview.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TourPlaceReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tourPlace<T extends TourPlaceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TourPlaceDefaultArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TourPlaceReview model
+   */
+  interface TourPlaceReviewFieldRefs {
+    readonly id: FieldRef<"TourPlaceReview", 'Int'>
+    readonly userId: FieldRef<"TourPlaceReview", 'Int'>
+    readonly tourPlaceId: FieldRef<"TourPlaceReview", 'Int'>
+    readonly rating: FieldRef<"TourPlaceReview", 'Int'>
+    readonly comment: FieldRef<"TourPlaceReview", 'String'>
+    readonly createdAt: FieldRef<"TourPlaceReview", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TourPlaceReview findUnique
+   */
+  export type TourPlaceReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlaceReview to fetch.
+     */
+    where: TourPlaceReviewWhereUniqueInput
+  }
+
+  /**
+   * TourPlaceReview findUniqueOrThrow
+   */
+  export type TourPlaceReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlaceReview to fetch.
+     */
+    where: TourPlaceReviewWhereUniqueInput
+  }
+
+  /**
+   * TourPlaceReview findFirst
+   */
+  export type TourPlaceReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlaceReview to fetch.
+     */
+    where?: TourPlaceReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TourPlaceReviews to fetch.
+     */
+    orderBy?: TourPlaceReviewOrderByWithRelationInput | TourPlaceReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TourPlaceReviews.
+     */
+    cursor?: TourPlaceReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TourPlaceReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TourPlaceReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TourPlaceReviews.
+     */
+    distinct?: TourPlaceReviewScalarFieldEnum | TourPlaceReviewScalarFieldEnum[]
+  }
+
+  /**
+   * TourPlaceReview findFirstOrThrow
+   */
+  export type TourPlaceReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlaceReview to fetch.
+     */
+    where?: TourPlaceReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TourPlaceReviews to fetch.
+     */
+    orderBy?: TourPlaceReviewOrderByWithRelationInput | TourPlaceReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TourPlaceReviews.
+     */
+    cursor?: TourPlaceReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TourPlaceReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TourPlaceReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TourPlaceReviews.
+     */
+    distinct?: TourPlaceReviewScalarFieldEnum | TourPlaceReviewScalarFieldEnum[]
+  }
+
+  /**
+   * TourPlaceReview findMany
+   */
+  export type TourPlaceReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlaceReviews to fetch.
+     */
+    where?: TourPlaceReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TourPlaceReviews to fetch.
+     */
+    orderBy?: TourPlaceReviewOrderByWithRelationInput | TourPlaceReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TourPlaceReviews.
+     */
+    cursor?: TourPlaceReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TourPlaceReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TourPlaceReviews.
+     */
+    skip?: number
+    distinct?: TourPlaceReviewScalarFieldEnum | TourPlaceReviewScalarFieldEnum[]
+  }
+
+  /**
+   * TourPlaceReview create
+   */
+  export type TourPlaceReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TourPlaceReview.
+     */
+    data: XOR<TourPlaceReviewCreateInput, TourPlaceReviewUncheckedCreateInput>
+  }
+
+  /**
+   * TourPlaceReview createMany
+   */
+  export type TourPlaceReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TourPlaceReviews.
+     */
+    data: TourPlaceReviewCreateManyInput | TourPlaceReviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TourPlaceReview createManyAndReturn
+   */
+  export type TourPlaceReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * The data used to create many TourPlaceReviews.
+     */
+    data: TourPlaceReviewCreateManyInput | TourPlaceReviewCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TourPlaceReview update
+   */
+  export type TourPlaceReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TourPlaceReview.
+     */
+    data: XOR<TourPlaceReviewUpdateInput, TourPlaceReviewUncheckedUpdateInput>
+    /**
+     * Choose, which TourPlaceReview to update.
+     */
+    where: TourPlaceReviewWhereUniqueInput
+  }
+
+  /**
+   * TourPlaceReview updateMany
+   */
+  export type TourPlaceReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TourPlaceReviews.
+     */
+    data: XOR<TourPlaceReviewUpdateManyMutationInput, TourPlaceReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which TourPlaceReviews to update
+     */
+    where?: TourPlaceReviewWhereInput
+    /**
+     * Limit how many TourPlaceReviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TourPlaceReview updateManyAndReturn
+   */
+  export type TourPlaceReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * The data used to update TourPlaceReviews.
+     */
+    data: XOR<TourPlaceReviewUpdateManyMutationInput, TourPlaceReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which TourPlaceReviews to update
+     */
+    where?: TourPlaceReviewWhereInput
+    /**
+     * Limit how many TourPlaceReviews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TourPlaceReview upsert
+   */
+  export type TourPlaceReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TourPlaceReview to update in case it exists.
+     */
+    where: TourPlaceReviewWhereUniqueInput
+    /**
+     * In case the TourPlaceReview found by the `where` argument doesn't exist, create a new TourPlaceReview with this data.
+     */
+    create: XOR<TourPlaceReviewCreateInput, TourPlaceReviewUncheckedCreateInput>
+    /**
+     * In case the TourPlaceReview was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TourPlaceReviewUpdateInput, TourPlaceReviewUncheckedUpdateInput>
+  }
+
+  /**
+   * TourPlaceReview delete
+   */
+  export type TourPlaceReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    /**
+     * Filter which TourPlaceReview to delete.
+     */
+    where: TourPlaceReviewWhereUniqueInput
+  }
+
+  /**
+   * TourPlaceReview deleteMany
+   */
+  export type TourPlaceReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TourPlaceReviews to delete
+     */
+    where?: TourPlaceReviewWhereInput
+    /**
+     * Limit how many TourPlaceReviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TourPlaceReview without action
+   */
+  export type TourPlaceReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+  }
+
 
   /**
    * Model User
@@ -13399,6 +14973,3314 @@ export namespace Prisma {
 
 
   /**
+   * Model Division
+   */
+
+  export type AggregateDivision = {
+    _count: DivisionCountAggregateOutputType | null
+    _avg: DivisionAvgAggregateOutputType | null
+    _sum: DivisionSumAggregateOutputType | null
+    _min: DivisionMinAggregateOutputType | null
+    _max: DivisionMaxAggregateOutputType | null
+  }
+
+  export type DivisionAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DivisionSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DivisionMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type DivisionMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type DivisionCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type DivisionAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type DivisionSumAggregateInputType = {
+    id?: true
+  }
+
+  export type DivisionMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type DivisionMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type DivisionCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type DivisionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Division to aggregate.
+     */
+    where?: DivisionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Divisions to fetch.
+     */
+    orderBy?: DivisionOrderByWithRelationInput | DivisionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DivisionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Divisions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Divisions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Divisions
+    **/
+    _count?: true | DivisionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DivisionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DivisionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DivisionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DivisionMaxAggregateInputType
+  }
+
+  export type GetDivisionAggregateType<T extends DivisionAggregateArgs> = {
+        [P in keyof T & keyof AggregateDivision]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDivision[P]>
+      : GetScalarType<T[P], AggregateDivision[P]>
+  }
+
+
+
+
+  export type DivisionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DivisionWhereInput
+    orderBy?: DivisionOrderByWithAggregationInput | DivisionOrderByWithAggregationInput[]
+    by: DivisionScalarFieldEnum[] | DivisionScalarFieldEnum
+    having?: DivisionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DivisionCountAggregateInputType | true
+    _avg?: DivisionAvgAggregateInputType
+    _sum?: DivisionSumAggregateInputType
+    _min?: DivisionMinAggregateInputType
+    _max?: DivisionMaxAggregateInputType
+  }
+
+  export type DivisionGroupByOutputType = {
+    id: number
+    name: string
+    _count: DivisionCountAggregateOutputType | null
+    _avg: DivisionAvgAggregateOutputType | null
+    _sum: DivisionSumAggregateOutputType | null
+    _min: DivisionMinAggregateOutputType | null
+    _max: DivisionMaxAggregateOutputType | null
+  }
+
+  type GetDivisionGroupByPayload<T extends DivisionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DivisionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DivisionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DivisionGroupByOutputType[P]>
+            : GetScalarType<T[P], DivisionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DivisionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    districts?: boolean | Division$districtsArgs<ExtArgs>
+    _count?: boolean | DivisionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["division"]>
+
+  export type DivisionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["division"]>
+
+  export type DivisionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["division"]>
+
+  export type DivisionSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type DivisionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["division"]>
+  export type DivisionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    districts?: boolean | Division$districtsArgs<ExtArgs>
+    _count?: boolean | DivisionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DivisionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type DivisionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $DivisionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Division"
+    objects: {
+      districts: Prisma.$DistrictPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["division"]>
+    composites: {}
+  }
+
+  type DivisionGetPayload<S extends boolean | null | undefined | DivisionDefaultArgs> = $Result.GetResult<Prisma.$DivisionPayload, S>
+
+  type DivisionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DivisionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DivisionCountAggregateInputType | true
+    }
+
+  export interface DivisionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Division'], meta: { name: 'Division' } }
+    /**
+     * Find zero or one Division that matches the filter.
+     * @param {DivisionFindUniqueArgs} args - Arguments to find a Division
+     * @example
+     * // Get one Division
+     * const division = await prisma.division.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DivisionFindUniqueArgs>(args: SelectSubset<T, DivisionFindUniqueArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Division that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DivisionFindUniqueOrThrowArgs} args - Arguments to find a Division
+     * @example
+     * // Get one Division
+     * const division = await prisma.division.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DivisionFindUniqueOrThrowArgs>(args: SelectSubset<T, DivisionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Division that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DivisionFindFirstArgs} args - Arguments to find a Division
+     * @example
+     * // Get one Division
+     * const division = await prisma.division.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DivisionFindFirstArgs>(args?: SelectSubset<T, DivisionFindFirstArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Division that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DivisionFindFirstOrThrowArgs} args - Arguments to find a Division
+     * @example
+     * // Get one Division
+     * const division = await prisma.division.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DivisionFindFirstOrThrowArgs>(args?: SelectSubset<T, DivisionFindFirstOrThrowArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Divisions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DivisionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Divisions
+     * const divisions = await prisma.division.findMany()
+     * 
+     * // Get first 10 Divisions
+     * const divisions = await prisma.division.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const divisionWithIdOnly = await prisma.division.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DivisionFindManyArgs>(args?: SelectSubset<T, DivisionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Division.
+     * @param {DivisionCreateArgs} args - Arguments to create a Division.
+     * @example
+     * // Create one Division
+     * const Division = await prisma.division.create({
+     *   data: {
+     *     // ... data to create a Division
+     *   }
+     * })
+     * 
+     */
+    create<T extends DivisionCreateArgs>(args: SelectSubset<T, DivisionCreateArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Divisions.
+     * @param {DivisionCreateManyArgs} args - Arguments to create many Divisions.
+     * @example
+     * // Create many Divisions
+     * const division = await prisma.division.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DivisionCreateManyArgs>(args?: SelectSubset<T, DivisionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Divisions and returns the data saved in the database.
+     * @param {DivisionCreateManyAndReturnArgs} args - Arguments to create many Divisions.
+     * @example
+     * // Create many Divisions
+     * const division = await prisma.division.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Divisions and only return the `id`
+     * const divisionWithIdOnly = await prisma.division.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DivisionCreateManyAndReturnArgs>(args?: SelectSubset<T, DivisionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Division.
+     * @param {DivisionDeleteArgs} args - Arguments to delete one Division.
+     * @example
+     * // Delete one Division
+     * const Division = await prisma.division.delete({
+     *   where: {
+     *     // ... filter to delete one Division
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DivisionDeleteArgs>(args: SelectSubset<T, DivisionDeleteArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Division.
+     * @param {DivisionUpdateArgs} args - Arguments to update one Division.
+     * @example
+     * // Update one Division
+     * const division = await prisma.division.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DivisionUpdateArgs>(args: SelectSubset<T, DivisionUpdateArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Divisions.
+     * @param {DivisionDeleteManyArgs} args - Arguments to filter Divisions to delete.
+     * @example
+     * // Delete a few Divisions
+     * const { count } = await prisma.division.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DivisionDeleteManyArgs>(args?: SelectSubset<T, DivisionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Divisions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DivisionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Divisions
+     * const division = await prisma.division.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DivisionUpdateManyArgs>(args: SelectSubset<T, DivisionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Divisions and returns the data updated in the database.
+     * @param {DivisionUpdateManyAndReturnArgs} args - Arguments to update many Divisions.
+     * @example
+     * // Update many Divisions
+     * const division = await prisma.division.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Divisions and only return the `id`
+     * const divisionWithIdOnly = await prisma.division.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DivisionUpdateManyAndReturnArgs>(args: SelectSubset<T, DivisionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Division.
+     * @param {DivisionUpsertArgs} args - Arguments to update or create a Division.
+     * @example
+     * // Update or create a Division
+     * const division = await prisma.division.upsert({
+     *   create: {
+     *     // ... data to create a Division
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Division we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DivisionUpsertArgs>(args: SelectSubset<T, DivisionUpsertArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Divisions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DivisionCountArgs} args - Arguments to filter Divisions to count.
+     * @example
+     * // Count the number of Divisions
+     * const count = await prisma.division.count({
+     *   where: {
+     *     // ... the filter for the Divisions we want to count
+     *   }
+     * })
+    **/
+    count<T extends DivisionCountArgs>(
+      args?: Subset<T, DivisionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DivisionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Division.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DivisionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DivisionAggregateArgs>(args: Subset<T, DivisionAggregateArgs>): Prisma.PrismaPromise<GetDivisionAggregateType<T>>
+
+    /**
+     * Group by Division.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DivisionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DivisionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DivisionGroupByArgs['orderBy'] }
+        : { orderBy?: DivisionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DivisionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDivisionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Division model
+   */
+  readonly fields: DivisionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Division.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DivisionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    districts<T extends Division$districtsArgs<ExtArgs> = {}>(args?: Subset<T, Division$districtsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Division model
+   */
+  interface DivisionFieldRefs {
+    readonly id: FieldRef<"Division", 'Int'>
+    readonly name: FieldRef<"Division", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Division findUnique
+   */
+  export type DivisionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * Filter, which Division to fetch.
+     */
+    where: DivisionWhereUniqueInput
+  }
+
+  /**
+   * Division findUniqueOrThrow
+   */
+  export type DivisionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * Filter, which Division to fetch.
+     */
+    where: DivisionWhereUniqueInput
+  }
+
+  /**
+   * Division findFirst
+   */
+  export type DivisionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * Filter, which Division to fetch.
+     */
+    where?: DivisionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Divisions to fetch.
+     */
+    orderBy?: DivisionOrderByWithRelationInput | DivisionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Divisions.
+     */
+    cursor?: DivisionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Divisions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Divisions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Divisions.
+     */
+    distinct?: DivisionScalarFieldEnum | DivisionScalarFieldEnum[]
+  }
+
+  /**
+   * Division findFirstOrThrow
+   */
+  export type DivisionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * Filter, which Division to fetch.
+     */
+    where?: DivisionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Divisions to fetch.
+     */
+    orderBy?: DivisionOrderByWithRelationInput | DivisionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Divisions.
+     */
+    cursor?: DivisionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Divisions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Divisions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Divisions.
+     */
+    distinct?: DivisionScalarFieldEnum | DivisionScalarFieldEnum[]
+  }
+
+  /**
+   * Division findMany
+   */
+  export type DivisionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * Filter, which Divisions to fetch.
+     */
+    where?: DivisionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Divisions to fetch.
+     */
+    orderBy?: DivisionOrderByWithRelationInput | DivisionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Divisions.
+     */
+    cursor?: DivisionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Divisions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Divisions.
+     */
+    skip?: number
+    distinct?: DivisionScalarFieldEnum | DivisionScalarFieldEnum[]
+  }
+
+  /**
+   * Division create
+   */
+  export type DivisionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Division.
+     */
+    data: XOR<DivisionCreateInput, DivisionUncheckedCreateInput>
+  }
+
+  /**
+   * Division createMany
+   */
+  export type DivisionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Divisions.
+     */
+    data: DivisionCreateManyInput | DivisionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Division createManyAndReturn
+   */
+  export type DivisionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * The data used to create many Divisions.
+     */
+    data: DivisionCreateManyInput | DivisionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Division update
+   */
+  export type DivisionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Division.
+     */
+    data: XOR<DivisionUpdateInput, DivisionUncheckedUpdateInput>
+    /**
+     * Choose, which Division to update.
+     */
+    where: DivisionWhereUniqueInput
+  }
+
+  /**
+   * Division updateMany
+   */
+  export type DivisionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Divisions.
+     */
+    data: XOR<DivisionUpdateManyMutationInput, DivisionUncheckedUpdateManyInput>
+    /**
+     * Filter which Divisions to update
+     */
+    where?: DivisionWhereInput
+    /**
+     * Limit how many Divisions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Division updateManyAndReturn
+   */
+  export type DivisionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * The data used to update Divisions.
+     */
+    data: XOR<DivisionUpdateManyMutationInput, DivisionUncheckedUpdateManyInput>
+    /**
+     * Filter which Divisions to update
+     */
+    where?: DivisionWhereInput
+    /**
+     * Limit how many Divisions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Division upsert
+   */
+  export type DivisionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Division to update in case it exists.
+     */
+    where: DivisionWhereUniqueInput
+    /**
+     * In case the Division found by the `where` argument doesn't exist, create a new Division with this data.
+     */
+    create: XOR<DivisionCreateInput, DivisionUncheckedCreateInput>
+    /**
+     * In case the Division was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DivisionUpdateInput, DivisionUncheckedUpdateInput>
+  }
+
+  /**
+   * Division delete
+   */
+  export type DivisionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+    /**
+     * Filter which Division to delete.
+     */
+    where: DivisionWhereUniqueInput
+  }
+
+  /**
+   * Division deleteMany
+   */
+  export type DivisionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Divisions to delete
+     */
+    where?: DivisionWhereInput
+    /**
+     * Limit how many Divisions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Division.districts
+   */
+  export type Division$districtsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    where?: DistrictWhereInput
+    orderBy?: DistrictOrderByWithRelationInput | DistrictOrderByWithRelationInput[]
+    cursor?: DistrictWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DistrictScalarFieldEnum | DistrictScalarFieldEnum[]
+  }
+
+  /**
+   * Division without action
+   */
+  export type DivisionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Division
+     */
+    select?: DivisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Division
+     */
+    omit?: DivisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DivisionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model District
+   */
+
+  export type AggregateDistrict = {
+    _count: DistrictCountAggregateOutputType | null
+    _avg: DistrictAvgAggregateOutputType | null
+    _sum: DistrictSumAggregateOutputType | null
+    _min: DistrictMinAggregateOutputType | null
+    _max: DistrictMaxAggregateOutputType | null
+  }
+
+  export type DistrictAvgAggregateOutputType = {
+    id: number | null
+    divisionId: number | null
+  }
+
+  export type DistrictSumAggregateOutputType = {
+    id: number | null
+    divisionId: number | null
+  }
+
+  export type DistrictMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    divisionId: number | null
+  }
+
+  export type DistrictMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    divisionId: number | null
+  }
+
+  export type DistrictCountAggregateOutputType = {
+    id: number
+    name: number
+    divisionId: number
+    _all: number
+  }
+
+
+  export type DistrictAvgAggregateInputType = {
+    id?: true
+    divisionId?: true
+  }
+
+  export type DistrictSumAggregateInputType = {
+    id?: true
+    divisionId?: true
+  }
+
+  export type DistrictMinAggregateInputType = {
+    id?: true
+    name?: true
+    divisionId?: true
+  }
+
+  export type DistrictMaxAggregateInputType = {
+    id?: true
+    name?: true
+    divisionId?: true
+  }
+
+  export type DistrictCountAggregateInputType = {
+    id?: true
+    name?: true
+    divisionId?: true
+    _all?: true
+  }
+
+  export type DistrictAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which District to aggregate.
+     */
+    where?: DistrictWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Districts to fetch.
+     */
+    orderBy?: DistrictOrderByWithRelationInput | DistrictOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DistrictWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Districts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Districts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Districts
+    **/
+    _count?: true | DistrictCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DistrictAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DistrictSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DistrictMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DistrictMaxAggregateInputType
+  }
+
+  export type GetDistrictAggregateType<T extends DistrictAggregateArgs> = {
+        [P in keyof T & keyof AggregateDistrict]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDistrict[P]>
+      : GetScalarType<T[P], AggregateDistrict[P]>
+  }
+
+
+
+
+  export type DistrictGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DistrictWhereInput
+    orderBy?: DistrictOrderByWithAggregationInput | DistrictOrderByWithAggregationInput[]
+    by: DistrictScalarFieldEnum[] | DistrictScalarFieldEnum
+    having?: DistrictScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DistrictCountAggregateInputType | true
+    _avg?: DistrictAvgAggregateInputType
+    _sum?: DistrictSumAggregateInputType
+    _min?: DistrictMinAggregateInputType
+    _max?: DistrictMaxAggregateInputType
+  }
+
+  export type DistrictGroupByOutputType = {
+    id: number
+    name: string
+    divisionId: number
+    _count: DistrictCountAggregateOutputType | null
+    _avg: DistrictAvgAggregateOutputType | null
+    _sum: DistrictSumAggregateOutputType | null
+    _min: DistrictMinAggregateOutputType | null
+    _max: DistrictMaxAggregateOutputType | null
+  }
+
+  type GetDistrictGroupByPayload<T extends DistrictGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DistrictGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DistrictGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DistrictGroupByOutputType[P]>
+            : GetScalarType<T[P], DistrictGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DistrictSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    divisionId?: boolean
+    division?: boolean | DivisionDefaultArgs<ExtArgs>
+    tourPlaces?: boolean | District$tourPlacesArgs<ExtArgs>
+    _count?: boolean | DistrictCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["district"]>
+
+  export type DistrictSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    divisionId?: boolean
+    division?: boolean | DivisionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["district"]>
+
+  export type DistrictSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    divisionId?: boolean
+    division?: boolean | DivisionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["district"]>
+
+  export type DistrictSelectScalar = {
+    id?: boolean
+    name?: boolean
+    divisionId?: boolean
+  }
+
+  export type DistrictOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "divisionId", ExtArgs["result"]["district"]>
+  export type DistrictInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    division?: boolean | DivisionDefaultArgs<ExtArgs>
+    tourPlaces?: boolean | District$tourPlacesArgs<ExtArgs>
+    _count?: boolean | DistrictCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DistrictIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    division?: boolean | DivisionDefaultArgs<ExtArgs>
+  }
+  export type DistrictIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    division?: boolean | DivisionDefaultArgs<ExtArgs>
+  }
+
+  export type $DistrictPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "District"
+    objects: {
+      division: Prisma.$DivisionPayload<ExtArgs>
+      tourPlaces: Prisma.$TourPlacePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      divisionId: number
+    }, ExtArgs["result"]["district"]>
+    composites: {}
+  }
+
+  type DistrictGetPayload<S extends boolean | null | undefined | DistrictDefaultArgs> = $Result.GetResult<Prisma.$DistrictPayload, S>
+
+  type DistrictCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DistrictFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DistrictCountAggregateInputType | true
+    }
+
+  export interface DistrictDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['District'], meta: { name: 'District' } }
+    /**
+     * Find zero or one District that matches the filter.
+     * @param {DistrictFindUniqueArgs} args - Arguments to find a District
+     * @example
+     * // Get one District
+     * const district = await prisma.district.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DistrictFindUniqueArgs>(args: SelectSubset<T, DistrictFindUniqueArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one District that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DistrictFindUniqueOrThrowArgs} args - Arguments to find a District
+     * @example
+     * // Get one District
+     * const district = await prisma.district.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DistrictFindUniqueOrThrowArgs>(args: SelectSubset<T, DistrictFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first District that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DistrictFindFirstArgs} args - Arguments to find a District
+     * @example
+     * // Get one District
+     * const district = await prisma.district.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DistrictFindFirstArgs>(args?: SelectSubset<T, DistrictFindFirstArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first District that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DistrictFindFirstOrThrowArgs} args - Arguments to find a District
+     * @example
+     * // Get one District
+     * const district = await prisma.district.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DistrictFindFirstOrThrowArgs>(args?: SelectSubset<T, DistrictFindFirstOrThrowArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Districts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DistrictFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Districts
+     * const districts = await prisma.district.findMany()
+     * 
+     * // Get first 10 Districts
+     * const districts = await prisma.district.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const districtWithIdOnly = await prisma.district.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DistrictFindManyArgs>(args?: SelectSubset<T, DistrictFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a District.
+     * @param {DistrictCreateArgs} args - Arguments to create a District.
+     * @example
+     * // Create one District
+     * const District = await prisma.district.create({
+     *   data: {
+     *     // ... data to create a District
+     *   }
+     * })
+     * 
+     */
+    create<T extends DistrictCreateArgs>(args: SelectSubset<T, DistrictCreateArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Districts.
+     * @param {DistrictCreateManyArgs} args - Arguments to create many Districts.
+     * @example
+     * // Create many Districts
+     * const district = await prisma.district.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DistrictCreateManyArgs>(args?: SelectSubset<T, DistrictCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Districts and returns the data saved in the database.
+     * @param {DistrictCreateManyAndReturnArgs} args - Arguments to create many Districts.
+     * @example
+     * // Create many Districts
+     * const district = await prisma.district.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Districts and only return the `id`
+     * const districtWithIdOnly = await prisma.district.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DistrictCreateManyAndReturnArgs>(args?: SelectSubset<T, DistrictCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a District.
+     * @param {DistrictDeleteArgs} args - Arguments to delete one District.
+     * @example
+     * // Delete one District
+     * const District = await prisma.district.delete({
+     *   where: {
+     *     // ... filter to delete one District
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DistrictDeleteArgs>(args: SelectSubset<T, DistrictDeleteArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one District.
+     * @param {DistrictUpdateArgs} args - Arguments to update one District.
+     * @example
+     * // Update one District
+     * const district = await prisma.district.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DistrictUpdateArgs>(args: SelectSubset<T, DistrictUpdateArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Districts.
+     * @param {DistrictDeleteManyArgs} args - Arguments to filter Districts to delete.
+     * @example
+     * // Delete a few Districts
+     * const { count } = await prisma.district.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DistrictDeleteManyArgs>(args?: SelectSubset<T, DistrictDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Districts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DistrictUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Districts
+     * const district = await prisma.district.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DistrictUpdateManyArgs>(args: SelectSubset<T, DistrictUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Districts and returns the data updated in the database.
+     * @param {DistrictUpdateManyAndReturnArgs} args - Arguments to update many Districts.
+     * @example
+     * // Update many Districts
+     * const district = await prisma.district.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Districts and only return the `id`
+     * const districtWithIdOnly = await prisma.district.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DistrictUpdateManyAndReturnArgs>(args: SelectSubset<T, DistrictUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one District.
+     * @param {DistrictUpsertArgs} args - Arguments to update or create a District.
+     * @example
+     * // Update or create a District
+     * const district = await prisma.district.upsert({
+     *   create: {
+     *     // ... data to create a District
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the District we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DistrictUpsertArgs>(args: SelectSubset<T, DistrictUpsertArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Districts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DistrictCountArgs} args - Arguments to filter Districts to count.
+     * @example
+     * // Count the number of Districts
+     * const count = await prisma.district.count({
+     *   where: {
+     *     // ... the filter for the Districts we want to count
+     *   }
+     * })
+    **/
+    count<T extends DistrictCountArgs>(
+      args?: Subset<T, DistrictCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DistrictCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a District.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DistrictAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DistrictAggregateArgs>(args: Subset<T, DistrictAggregateArgs>): Prisma.PrismaPromise<GetDistrictAggregateType<T>>
+
+    /**
+     * Group by District.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DistrictGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DistrictGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DistrictGroupByArgs['orderBy'] }
+        : { orderBy?: DistrictGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DistrictGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDistrictGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the District model
+   */
+  readonly fields: DistrictFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for District.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DistrictClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    division<T extends DivisionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DivisionDefaultArgs<ExtArgs>>): Prisma__DivisionClient<$Result.GetResult<Prisma.$DivisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tourPlaces<T extends District$tourPlacesArgs<ExtArgs> = {}>(args?: Subset<T, District$tourPlacesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the District model
+   */
+  interface DistrictFieldRefs {
+    readonly id: FieldRef<"District", 'Int'>
+    readonly name: FieldRef<"District", 'String'>
+    readonly divisionId: FieldRef<"District", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * District findUnique
+   */
+  export type DistrictFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which District to fetch.
+     */
+    where: DistrictWhereUniqueInput
+  }
+
+  /**
+   * District findUniqueOrThrow
+   */
+  export type DistrictFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which District to fetch.
+     */
+    where: DistrictWhereUniqueInput
+  }
+
+  /**
+   * District findFirst
+   */
+  export type DistrictFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which District to fetch.
+     */
+    where?: DistrictWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Districts to fetch.
+     */
+    orderBy?: DistrictOrderByWithRelationInput | DistrictOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Districts.
+     */
+    cursor?: DistrictWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Districts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Districts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Districts.
+     */
+    distinct?: DistrictScalarFieldEnum | DistrictScalarFieldEnum[]
+  }
+
+  /**
+   * District findFirstOrThrow
+   */
+  export type DistrictFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which District to fetch.
+     */
+    where?: DistrictWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Districts to fetch.
+     */
+    orderBy?: DistrictOrderByWithRelationInput | DistrictOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Districts.
+     */
+    cursor?: DistrictWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Districts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Districts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Districts.
+     */
+    distinct?: DistrictScalarFieldEnum | DistrictScalarFieldEnum[]
+  }
+
+  /**
+   * District findMany
+   */
+  export type DistrictFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * Filter, which Districts to fetch.
+     */
+    where?: DistrictWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Districts to fetch.
+     */
+    orderBy?: DistrictOrderByWithRelationInput | DistrictOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Districts.
+     */
+    cursor?: DistrictWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Districts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Districts.
+     */
+    skip?: number
+    distinct?: DistrictScalarFieldEnum | DistrictScalarFieldEnum[]
+  }
+
+  /**
+   * District create
+   */
+  export type DistrictCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * The data needed to create a District.
+     */
+    data: XOR<DistrictCreateInput, DistrictUncheckedCreateInput>
+  }
+
+  /**
+   * District createMany
+   */
+  export type DistrictCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Districts.
+     */
+    data: DistrictCreateManyInput | DistrictCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * District createManyAndReturn
+   */
+  export type DistrictCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * The data used to create many Districts.
+     */
+    data: DistrictCreateManyInput | DistrictCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * District update
+   */
+  export type DistrictUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * The data needed to update a District.
+     */
+    data: XOR<DistrictUpdateInput, DistrictUncheckedUpdateInput>
+    /**
+     * Choose, which District to update.
+     */
+    where: DistrictWhereUniqueInput
+  }
+
+  /**
+   * District updateMany
+   */
+  export type DistrictUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Districts.
+     */
+    data: XOR<DistrictUpdateManyMutationInput, DistrictUncheckedUpdateManyInput>
+    /**
+     * Filter which Districts to update
+     */
+    where?: DistrictWhereInput
+    /**
+     * Limit how many Districts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * District updateManyAndReturn
+   */
+  export type DistrictUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * The data used to update Districts.
+     */
+    data: XOR<DistrictUpdateManyMutationInput, DistrictUncheckedUpdateManyInput>
+    /**
+     * Filter which Districts to update
+     */
+    where?: DistrictWhereInput
+    /**
+     * Limit how many Districts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * District upsert
+   */
+  export type DistrictUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * The filter to search for the District to update in case it exists.
+     */
+    where: DistrictWhereUniqueInput
+    /**
+     * In case the District found by the `where` argument doesn't exist, create a new District with this data.
+     */
+    create: XOR<DistrictCreateInput, DistrictUncheckedCreateInput>
+    /**
+     * In case the District was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DistrictUpdateInput, DistrictUncheckedUpdateInput>
+  }
+
+  /**
+   * District delete
+   */
+  export type DistrictDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+    /**
+     * Filter which District to delete.
+     */
+    where: DistrictWhereUniqueInput
+  }
+
+  /**
+   * District deleteMany
+   */
+  export type DistrictDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Districts to delete
+     */
+    where?: DistrictWhereInput
+    /**
+     * Limit how many Districts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * District.tourPlaces
+   */
+  export type District$tourPlacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    where?: TourPlaceWhereInput
+    orderBy?: TourPlaceOrderByWithRelationInput | TourPlaceOrderByWithRelationInput[]
+    cursor?: TourPlaceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TourPlaceScalarFieldEnum | TourPlaceScalarFieldEnum[]
+  }
+
+  /**
+   * District without action
+   */
+  export type DistrictDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the District
+     */
+    select?: DistrictSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the District
+     */
+    omit?: DistrictOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DistrictInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TourPlace
+   */
+
+  export type AggregateTourPlace = {
+    _count: TourPlaceCountAggregateOutputType | null
+    _avg: TourPlaceAvgAggregateOutputType | null
+    _sum: TourPlaceSumAggregateOutputType | null
+    _min: TourPlaceMinAggregateOutputType | null
+    _max: TourPlaceMaxAggregateOutputType | null
+  }
+
+  export type TourPlaceAvgAggregateOutputType = {
+    id: number | null
+    districtId: number | null
+    addedBy: number | null
+  }
+
+  export type TourPlaceSumAggregateOutputType = {
+    id: number | null
+    districtId: number | null
+    addedBy: number | null
+  }
+
+  export type TourPlaceMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    imageUrl: string | null
+    districtId: number | null
+    addedBy: number | null
+  }
+
+  export type TourPlaceMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    imageUrl: string | null
+    districtId: number | null
+    addedBy: number | null
+  }
+
+  export type TourPlaceCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    imageUrl: number
+    districtId: number
+    addedBy: number
+    _all: number
+  }
+
+
+  export type TourPlaceAvgAggregateInputType = {
+    id?: true
+    districtId?: true
+    addedBy?: true
+  }
+
+  export type TourPlaceSumAggregateInputType = {
+    id?: true
+    districtId?: true
+    addedBy?: true
+  }
+
+  export type TourPlaceMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    imageUrl?: true
+    districtId?: true
+    addedBy?: true
+  }
+
+  export type TourPlaceMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    imageUrl?: true
+    districtId?: true
+    addedBy?: true
+  }
+
+  export type TourPlaceCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    imageUrl?: true
+    districtId?: true
+    addedBy?: true
+    _all?: true
+  }
+
+  export type TourPlaceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TourPlace to aggregate.
+     */
+    where?: TourPlaceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TourPlaces to fetch.
+     */
+    orderBy?: TourPlaceOrderByWithRelationInput | TourPlaceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TourPlaceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TourPlaces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TourPlaces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TourPlaces
+    **/
+    _count?: true | TourPlaceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TourPlaceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TourPlaceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TourPlaceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TourPlaceMaxAggregateInputType
+  }
+
+  export type GetTourPlaceAggregateType<T extends TourPlaceAggregateArgs> = {
+        [P in keyof T & keyof AggregateTourPlace]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTourPlace[P]>
+      : GetScalarType<T[P], AggregateTourPlace[P]>
+  }
+
+
+
+
+  export type TourPlaceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TourPlaceWhereInput
+    orderBy?: TourPlaceOrderByWithAggregationInput | TourPlaceOrderByWithAggregationInput[]
+    by: TourPlaceScalarFieldEnum[] | TourPlaceScalarFieldEnum
+    having?: TourPlaceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TourPlaceCountAggregateInputType | true
+    _avg?: TourPlaceAvgAggregateInputType
+    _sum?: TourPlaceSumAggregateInputType
+    _min?: TourPlaceMinAggregateInputType
+    _max?: TourPlaceMaxAggregateInputType
+  }
+
+  export type TourPlaceGroupByOutputType = {
+    id: number
+    name: string
+    description: string | null
+    imageUrl: string | null
+    districtId: number
+    addedBy: number | null
+    _count: TourPlaceCountAggregateOutputType | null
+    _avg: TourPlaceAvgAggregateOutputType | null
+    _sum: TourPlaceSumAggregateOutputType | null
+    _min: TourPlaceMinAggregateOutputType | null
+    _max: TourPlaceMaxAggregateOutputType | null
+  }
+
+  type GetTourPlaceGroupByPayload<T extends TourPlaceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TourPlaceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TourPlaceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TourPlaceGroupByOutputType[P]>
+            : GetScalarType<T[P], TourPlaceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TourPlaceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    districtId?: boolean
+    addedBy?: boolean
+    district?: boolean | DistrictDefaultArgs<ExtArgs>
+    tourPlaceReviews?: boolean | TourPlace$tourPlaceReviewsArgs<ExtArgs>
+    _count?: boolean | TourPlaceCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tourPlace"]>
+
+  export type TourPlaceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    districtId?: boolean
+    addedBy?: boolean
+    district?: boolean | DistrictDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tourPlace"]>
+
+  export type TourPlaceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    districtId?: boolean
+    addedBy?: boolean
+    district?: boolean | DistrictDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tourPlace"]>
+
+  export type TourPlaceSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    districtId?: boolean
+    addedBy?: boolean
+  }
+
+  export type TourPlaceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "imageUrl" | "districtId" | "addedBy", ExtArgs["result"]["tourPlace"]>
+  export type TourPlaceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    district?: boolean | DistrictDefaultArgs<ExtArgs>
+    tourPlaceReviews?: boolean | TourPlace$tourPlaceReviewsArgs<ExtArgs>
+    _count?: boolean | TourPlaceCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TourPlaceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    district?: boolean | DistrictDefaultArgs<ExtArgs>
+  }
+  export type TourPlaceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    district?: boolean | DistrictDefaultArgs<ExtArgs>
+  }
+
+  export type $TourPlacePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TourPlace"
+    objects: {
+      district: Prisma.$DistrictPayload<ExtArgs>
+      tourPlaceReviews: Prisma.$TourPlaceReviewPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      description: string | null
+      imageUrl: string | null
+      districtId: number
+      addedBy: number | null
+    }, ExtArgs["result"]["tourPlace"]>
+    composites: {}
+  }
+
+  type TourPlaceGetPayload<S extends boolean | null | undefined | TourPlaceDefaultArgs> = $Result.GetResult<Prisma.$TourPlacePayload, S>
+
+  type TourPlaceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TourPlaceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TourPlaceCountAggregateInputType | true
+    }
+
+  export interface TourPlaceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TourPlace'], meta: { name: 'TourPlace' } }
+    /**
+     * Find zero or one TourPlace that matches the filter.
+     * @param {TourPlaceFindUniqueArgs} args - Arguments to find a TourPlace
+     * @example
+     * // Get one TourPlace
+     * const tourPlace = await prisma.tourPlace.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TourPlaceFindUniqueArgs>(args: SelectSubset<T, TourPlaceFindUniqueArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TourPlace that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TourPlaceFindUniqueOrThrowArgs} args - Arguments to find a TourPlace
+     * @example
+     * // Get one TourPlace
+     * const tourPlace = await prisma.tourPlace.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TourPlaceFindUniqueOrThrowArgs>(args: SelectSubset<T, TourPlaceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TourPlace that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceFindFirstArgs} args - Arguments to find a TourPlace
+     * @example
+     * // Get one TourPlace
+     * const tourPlace = await prisma.tourPlace.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TourPlaceFindFirstArgs>(args?: SelectSubset<T, TourPlaceFindFirstArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TourPlace that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceFindFirstOrThrowArgs} args - Arguments to find a TourPlace
+     * @example
+     * // Get one TourPlace
+     * const tourPlace = await prisma.tourPlace.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TourPlaceFindFirstOrThrowArgs>(args?: SelectSubset<T, TourPlaceFindFirstOrThrowArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TourPlaces that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TourPlaces
+     * const tourPlaces = await prisma.tourPlace.findMany()
+     * 
+     * // Get first 10 TourPlaces
+     * const tourPlaces = await prisma.tourPlace.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tourPlaceWithIdOnly = await prisma.tourPlace.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TourPlaceFindManyArgs>(args?: SelectSubset<T, TourPlaceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TourPlace.
+     * @param {TourPlaceCreateArgs} args - Arguments to create a TourPlace.
+     * @example
+     * // Create one TourPlace
+     * const TourPlace = await prisma.tourPlace.create({
+     *   data: {
+     *     // ... data to create a TourPlace
+     *   }
+     * })
+     * 
+     */
+    create<T extends TourPlaceCreateArgs>(args: SelectSubset<T, TourPlaceCreateArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TourPlaces.
+     * @param {TourPlaceCreateManyArgs} args - Arguments to create many TourPlaces.
+     * @example
+     * // Create many TourPlaces
+     * const tourPlace = await prisma.tourPlace.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TourPlaceCreateManyArgs>(args?: SelectSubset<T, TourPlaceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TourPlaces and returns the data saved in the database.
+     * @param {TourPlaceCreateManyAndReturnArgs} args - Arguments to create many TourPlaces.
+     * @example
+     * // Create many TourPlaces
+     * const tourPlace = await prisma.tourPlace.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TourPlaces and only return the `id`
+     * const tourPlaceWithIdOnly = await prisma.tourPlace.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TourPlaceCreateManyAndReturnArgs>(args?: SelectSubset<T, TourPlaceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TourPlace.
+     * @param {TourPlaceDeleteArgs} args - Arguments to delete one TourPlace.
+     * @example
+     * // Delete one TourPlace
+     * const TourPlace = await prisma.tourPlace.delete({
+     *   where: {
+     *     // ... filter to delete one TourPlace
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TourPlaceDeleteArgs>(args: SelectSubset<T, TourPlaceDeleteArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TourPlace.
+     * @param {TourPlaceUpdateArgs} args - Arguments to update one TourPlace.
+     * @example
+     * // Update one TourPlace
+     * const tourPlace = await prisma.tourPlace.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TourPlaceUpdateArgs>(args: SelectSubset<T, TourPlaceUpdateArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TourPlaces.
+     * @param {TourPlaceDeleteManyArgs} args - Arguments to filter TourPlaces to delete.
+     * @example
+     * // Delete a few TourPlaces
+     * const { count } = await prisma.tourPlace.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TourPlaceDeleteManyArgs>(args?: SelectSubset<T, TourPlaceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TourPlaces.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TourPlaces
+     * const tourPlace = await prisma.tourPlace.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TourPlaceUpdateManyArgs>(args: SelectSubset<T, TourPlaceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TourPlaces and returns the data updated in the database.
+     * @param {TourPlaceUpdateManyAndReturnArgs} args - Arguments to update many TourPlaces.
+     * @example
+     * // Update many TourPlaces
+     * const tourPlace = await prisma.tourPlace.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TourPlaces and only return the `id`
+     * const tourPlaceWithIdOnly = await prisma.tourPlace.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TourPlaceUpdateManyAndReturnArgs>(args: SelectSubset<T, TourPlaceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TourPlace.
+     * @param {TourPlaceUpsertArgs} args - Arguments to update or create a TourPlace.
+     * @example
+     * // Update or create a TourPlace
+     * const tourPlace = await prisma.tourPlace.upsert({
+     *   create: {
+     *     // ... data to create a TourPlace
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TourPlace we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TourPlaceUpsertArgs>(args: SelectSubset<T, TourPlaceUpsertArgs<ExtArgs>>): Prisma__TourPlaceClient<$Result.GetResult<Prisma.$TourPlacePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TourPlaces.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceCountArgs} args - Arguments to filter TourPlaces to count.
+     * @example
+     * // Count the number of TourPlaces
+     * const count = await prisma.tourPlace.count({
+     *   where: {
+     *     // ... the filter for the TourPlaces we want to count
+     *   }
+     * })
+    **/
+    count<T extends TourPlaceCountArgs>(
+      args?: Subset<T, TourPlaceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TourPlaceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TourPlace.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TourPlaceAggregateArgs>(args: Subset<T, TourPlaceAggregateArgs>): Prisma.PrismaPromise<GetTourPlaceAggregateType<T>>
+
+    /**
+     * Group by TourPlace.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TourPlaceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TourPlaceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TourPlaceGroupByArgs['orderBy'] }
+        : { orderBy?: TourPlaceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TourPlaceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTourPlaceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TourPlace model
+   */
+  readonly fields: TourPlaceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TourPlace.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TourPlaceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    district<T extends DistrictDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DistrictDefaultArgs<ExtArgs>>): Prisma__DistrictClient<$Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tourPlaceReviews<T extends TourPlace$tourPlaceReviewsArgs<ExtArgs> = {}>(args?: Subset<T, TourPlace$tourPlaceReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TourPlaceReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TourPlace model
+   */
+  interface TourPlaceFieldRefs {
+    readonly id: FieldRef<"TourPlace", 'Int'>
+    readonly name: FieldRef<"TourPlace", 'String'>
+    readonly description: FieldRef<"TourPlace", 'String'>
+    readonly imageUrl: FieldRef<"TourPlace", 'String'>
+    readonly districtId: FieldRef<"TourPlace", 'Int'>
+    readonly addedBy: FieldRef<"TourPlace", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TourPlace findUnique
+   */
+  export type TourPlaceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlace to fetch.
+     */
+    where: TourPlaceWhereUniqueInput
+  }
+
+  /**
+   * TourPlace findUniqueOrThrow
+   */
+  export type TourPlaceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlace to fetch.
+     */
+    where: TourPlaceWhereUniqueInput
+  }
+
+  /**
+   * TourPlace findFirst
+   */
+  export type TourPlaceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlace to fetch.
+     */
+    where?: TourPlaceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TourPlaces to fetch.
+     */
+    orderBy?: TourPlaceOrderByWithRelationInput | TourPlaceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TourPlaces.
+     */
+    cursor?: TourPlaceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TourPlaces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TourPlaces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TourPlaces.
+     */
+    distinct?: TourPlaceScalarFieldEnum | TourPlaceScalarFieldEnum[]
+  }
+
+  /**
+   * TourPlace findFirstOrThrow
+   */
+  export type TourPlaceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlace to fetch.
+     */
+    where?: TourPlaceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TourPlaces to fetch.
+     */
+    orderBy?: TourPlaceOrderByWithRelationInput | TourPlaceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TourPlaces.
+     */
+    cursor?: TourPlaceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TourPlaces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TourPlaces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TourPlaces.
+     */
+    distinct?: TourPlaceScalarFieldEnum | TourPlaceScalarFieldEnum[]
+  }
+
+  /**
+   * TourPlace findMany
+   */
+  export type TourPlaceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * Filter, which TourPlaces to fetch.
+     */
+    where?: TourPlaceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TourPlaces to fetch.
+     */
+    orderBy?: TourPlaceOrderByWithRelationInput | TourPlaceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TourPlaces.
+     */
+    cursor?: TourPlaceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TourPlaces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TourPlaces.
+     */
+    skip?: number
+    distinct?: TourPlaceScalarFieldEnum | TourPlaceScalarFieldEnum[]
+  }
+
+  /**
+   * TourPlace create
+   */
+  export type TourPlaceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TourPlace.
+     */
+    data: XOR<TourPlaceCreateInput, TourPlaceUncheckedCreateInput>
+  }
+
+  /**
+   * TourPlace createMany
+   */
+  export type TourPlaceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TourPlaces.
+     */
+    data: TourPlaceCreateManyInput | TourPlaceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TourPlace createManyAndReturn
+   */
+  export type TourPlaceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * The data used to create many TourPlaces.
+     */
+    data: TourPlaceCreateManyInput | TourPlaceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TourPlace update
+   */
+  export type TourPlaceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TourPlace.
+     */
+    data: XOR<TourPlaceUpdateInput, TourPlaceUncheckedUpdateInput>
+    /**
+     * Choose, which TourPlace to update.
+     */
+    where: TourPlaceWhereUniqueInput
+  }
+
+  /**
+   * TourPlace updateMany
+   */
+  export type TourPlaceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TourPlaces.
+     */
+    data: XOR<TourPlaceUpdateManyMutationInput, TourPlaceUncheckedUpdateManyInput>
+    /**
+     * Filter which TourPlaces to update
+     */
+    where?: TourPlaceWhereInput
+    /**
+     * Limit how many TourPlaces to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TourPlace updateManyAndReturn
+   */
+  export type TourPlaceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * The data used to update TourPlaces.
+     */
+    data: XOR<TourPlaceUpdateManyMutationInput, TourPlaceUncheckedUpdateManyInput>
+    /**
+     * Filter which TourPlaces to update
+     */
+    where?: TourPlaceWhereInput
+    /**
+     * Limit how many TourPlaces to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TourPlace upsert
+   */
+  export type TourPlaceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TourPlace to update in case it exists.
+     */
+    where: TourPlaceWhereUniqueInput
+    /**
+     * In case the TourPlace found by the `where` argument doesn't exist, create a new TourPlace with this data.
+     */
+    create: XOR<TourPlaceCreateInput, TourPlaceUncheckedCreateInput>
+    /**
+     * In case the TourPlace was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TourPlaceUpdateInput, TourPlaceUncheckedUpdateInput>
+  }
+
+  /**
+   * TourPlace delete
+   */
+  export type TourPlaceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+    /**
+     * Filter which TourPlace to delete.
+     */
+    where: TourPlaceWhereUniqueInput
+  }
+
+  /**
+   * TourPlace deleteMany
+   */
+  export type TourPlaceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TourPlaces to delete
+     */
+    where?: TourPlaceWhereInput
+    /**
+     * Limit how many TourPlaces to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TourPlace.tourPlaceReviews
+   */
+  export type TourPlace$tourPlaceReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlaceReview
+     */
+    select?: TourPlaceReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlaceReview
+     */
+    omit?: TourPlaceReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceReviewInclude<ExtArgs> | null
+    where?: TourPlaceReviewWhereInput
+    orderBy?: TourPlaceReviewOrderByWithRelationInput | TourPlaceReviewOrderByWithRelationInput[]
+    cursor?: TourPlaceReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TourPlaceReviewScalarFieldEnum | TourPlaceReviewScalarFieldEnum[]
+  }
+
+  /**
+   * TourPlace without action
+   */
+  export type TourPlaceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TourPlace
+     */
+    select?: TourPlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TourPlace
+     */
+    omit?: TourPlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TourPlaceInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -13410,6 +18292,18 @@ export namespace Prisma {
   };
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+  export const TourPlaceReviewScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    tourPlaceId: 'tourPlaceId',
+    rating: 'rating',
+    comment: 'comment',
+    createdAt: 'createdAt'
+  };
+
+  export type TourPlaceReviewScalarFieldEnum = (typeof TourPlaceReviewScalarFieldEnum)[keyof typeof TourPlaceReviewScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
@@ -13535,6 +18429,35 @@ export namespace Prisma {
   export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
+  export const DivisionScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type DivisionScalarFieldEnum = (typeof DivisionScalarFieldEnum)[keyof typeof DivisionScalarFieldEnum]
+
+
+  export const DistrictScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    divisionId: 'divisionId'
+  };
+
+  export type DistrictScalarFieldEnum = (typeof DistrictScalarFieldEnum)[keyof typeof DistrictScalarFieldEnum]
+
+
+  export const TourPlaceScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    imageUrl: 'imageUrl',
+    districtId: 'districtId',
+    addedBy: 'addedBy'
+  };
+
+  export type TourPlaceScalarFieldEnum = (typeof TourPlaceScalarFieldEnum)[keyof typeof TourPlaceScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -13636,6 +18559,68 @@ export namespace Prisma {
    * Deep Input Types
    */
 
+
+  export type TourPlaceReviewWhereInput = {
+    AND?: TourPlaceReviewWhereInput | TourPlaceReviewWhereInput[]
+    OR?: TourPlaceReviewWhereInput[]
+    NOT?: TourPlaceReviewWhereInput | TourPlaceReviewWhereInput[]
+    id?: IntFilter<"TourPlaceReview"> | number
+    userId?: IntFilter<"TourPlaceReview"> | number
+    tourPlaceId?: IntFilter<"TourPlaceReview"> | number
+    rating?: IntFilter<"TourPlaceReview"> | number
+    comment?: StringNullableFilter<"TourPlaceReview"> | string | null
+    createdAt?: DateTimeFilter<"TourPlaceReview"> | Date | string
+    tourPlace?: XOR<TourPlaceScalarRelationFilter, TourPlaceWhereInput>
+  }
+
+  export type TourPlaceReviewOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tourPlaceId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    tourPlace?: TourPlaceOrderByWithRelationInput
+  }
+
+  export type TourPlaceReviewWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TourPlaceReviewWhereInput | TourPlaceReviewWhereInput[]
+    OR?: TourPlaceReviewWhereInput[]
+    NOT?: TourPlaceReviewWhereInput | TourPlaceReviewWhereInput[]
+    userId?: IntFilter<"TourPlaceReview"> | number
+    tourPlaceId?: IntFilter<"TourPlaceReview"> | number
+    rating?: IntFilter<"TourPlaceReview"> | number
+    comment?: StringNullableFilter<"TourPlaceReview"> | string | null
+    createdAt?: DateTimeFilter<"TourPlaceReview"> | Date | string
+    tourPlace?: XOR<TourPlaceScalarRelationFilter, TourPlaceWhereInput>
+  }, "id">
+
+  export type TourPlaceReviewOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tourPlaceId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: TourPlaceReviewCountOrderByAggregateInput
+    _avg?: TourPlaceReviewAvgOrderByAggregateInput
+    _max?: TourPlaceReviewMaxOrderByAggregateInput
+    _min?: TourPlaceReviewMinOrderByAggregateInput
+    _sum?: TourPlaceReviewSumOrderByAggregateInput
+  }
+
+  export type TourPlaceReviewScalarWhereWithAggregatesInput = {
+    AND?: TourPlaceReviewScalarWhereWithAggregatesInput | TourPlaceReviewScalarWhereWithAggregatesInput[]
+    OR?: TourPlaceReviewScalarWhereWithAggregatesInput[]
+    NOT?: TourPlaceReviewScalarWhereWithAggregatesInput | TourPlaceReviewScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TourPlaceReview"> | number
+    userId?: IntWithAggregatesFilter<"TourPlaceReview"> | number
+    tourPlaceId?: IntWithAggregatesFilter<"TourPlaceReview"> | number
+    rating?: IntWithAggregatesFilter<"TourPlaceReview"> | number
+    comment?: StringNullableWithAggregatesFilter<"TourPlaceReview"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"TourPlaceReview"> | Date | string
+  }
 
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
@@ -14302,6 +19287,222 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
   }
 
+  export type DivisionWhereInput = {
+    AND?: DivisionWhereInput | DivisionWhereInput[]
+    OR?: DivisionWhereInput[]
+    NOT?: DivisionWhereInput | DivisionWhereInput[]
+    id?: IntFilter<"Division"> | number
+    name?: StringFilter<"Division"> | string
+    districts?: DistrictListRelationFilter
+  }
+
+  export type DivisionOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    districts?: DistrictOrderByRelationAggregateInput
+  }
+
+  export type DivisionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: DivisionWhereInput | DivisionWhereInput[]
+    OR?: DivisionWhereInput[]
+    NOT?: DivisionWhereInput | DivisionWhereInput[]
+    districts?: DistrictListRelationFilter
+  }, "id" | "name">
+
+  export type DivisionOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: DivisionCountOrderByAggregateInput
+    _avg?: DivisionAvgOrderByAggregateInput
+    _max?: DivisionMaxOrderByAggregateInput
+    _min?: DivisionMinOrderByAggregateInput
+    _sum?: DivisionSumOrderByAggregateInput
+  }
+
+  export type DivisionScalarWhereWithAggregatesInput = {
+    AND?: DivisionScalarWhereWithAggregatesInput | DivisionScalarWhereWithAggregatesInput[]
+    OR?: DivisionScalarWhereWithAggregatesInput[]
+    NOT?: DivisionScalarWhereWithAggregatesInput | DivisionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Division"> | number
+    name?: StringWithAggregatesFilter<"Division"> | string
+  }
+
+  export type DistrictWhereInput = {
+    AND?: DistrictWhereInput | DistrictWhereInput[]
+    OR?: DistrictWhereInput[]
+    NOT?: DistrictWhereInput | DistrictWhereInput[]
+    id?: IntFilter<"District"> | number
+    name?: StringFilter<"District"> | string
+    divisionId?: IntFilter<"District"> | number
+    division?: XOR<DivisionScalarRelationFilter, DivisionWhereInput>
+    tourPlaces?: TourPlaceListRelationFilter
+  }
+
+  export type DistrictOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    divisionId?: SortOrder
+    division?: DivisionOrderByWithRelationInput
+    tourPlaces?: TourPlaceOrderByRelationAggregateInput
+  }
+
+  export type DistrictWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DistrictWhereInput | DistrictWhereInput[]
+    OR?: DistrictWhereInput[]
+    NOT?: DistrictWhereInput | DistrictWhereInput[]
+    name?: StringFilter<"District"> | string
+    divisionId?: IntFilter<"District"> | number
+    division?: XOR<DivisionScalarRelationFilter, DivisionWhereInput>
+    tourPlaces?: TourPlaceListRelationFilter
+  }, "id">
+
+  export type DistrictOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    divisionId?: SortOrder
+    _count?: DistrictCountOrderByAggregateInput
+    _avg?: DistrictAvgOrderByAggregateInput
+    _max?: DistrictMaxOrderByAggregateInput
+    _min?: DistrictMinOrderByAggregateInput
+    _sum?: DistrictSumOrderByAggregateInput
+  }
+
+  export type DistrictScalarWhereWithAggregatesInput = {
+    AND?: DistrictScalarWhereWithAggregatesInput | DistrictScalarWhereWithAggregatesInput[]
+    OR?: DistrictScalarWhereWithAggregatesInput[]
+    NOT?: DistrictScalarWhereWithAggregatesInput | DistrictScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"District"> | number
+    name?: StringWithAggregatesFilter<"District"> | string
+    divisionId?: IntWithAggregatesFilter<"District"> | number
+  }
+
+  export type TourPlaceWhereInput = {
+    AND?: TourPlaceWhereInput | TourPlaceWhereInput[]
+    OR?: TourPlaceWhereInput[]
+    NOT?: TourPlaceWhereInput | TourPlaceWhereInput[]
+    id?: IntFilter<"TourPlace"> | number
+    name?: StringFilter<"TourPlace"> | string
+    description?: StringNullableFilter<"TourPlace"> | string | null
+    imageUrl?: StringNullableFilter<"TourPlace"> | string | null
+    districtId?: IntFilter<"TourPlace"> | number
+    addedBy?: IntNullableFilter<"TourPlace"> | number | null
+    district?: XOR<DistrictScalarRelationFilter, DistrictWhereInput>
+    tourPlaceReviews?: TourPlaceReviewListRelationFilter
+  }
+
+  export type TourPlaceOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    districtId?: SortOrder
+    addedBy?: SortOrderInput | SortOrder
+    district?: DistrictOrderByWithRelationInput
+    tourPlaceReviews?: TourPlaceReviewOrderByRelationAggregateInput
+  }
+
+  export type TourPlaceWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TourPlaceWhereInput | TourPlaceWhereInput[]
+    OR?: TourPlaceWhereInput[]
+    NOT?: TourPlaceWhereInput | TourPlaceWhereInput[]
+    name?: StringFilter<"TourPlace"> | string
+    description?: StringNullableFilter<"TourPlace"> | string | null
+    imageUrl?: StringNullableFilter<"TourPlace"> | string | null
+    districtId?: IntFilter<"TourPlace"> | number
+    addedBy?: IntNullableFilter<"TourPlace"> | number | null
+    district?: XOR<DistrictScalarRelationFilter, DistrictWhereInput>
+    tourPlaceReviews?: TourPlaceReviewListRelationFilter
+  }, "id">
+
+  export type TourPlaceOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    districtId?: SortOrder
+    addedBy?: SortOrderInput | SortOrder
+    _count?: TourPlaceCountOrderByAggregateInput
+    _avg?: TourPlaceAvgOrderByAggregateInput
+    _max?: TourPlaceMaxOrderByAggregateInput
+    _min?: TourPlaceMinOrderByAggregateInput
+    _sum?: TourPlaceSumOrderByAggregateInput
+  }
+
+  export type TourPlaceScalarWhereWithAggregatesInput = {
+    AND?: TourPlaceScalarWhereWithAggregatesInput | TourPlaceScalarWhereWithAggregatesInput[]
+    OR?: TourPlaceScalarWhereWithAggregatesInput[]
+    NOT?: TourPlaceScalarWhereWithAggregatesInput | TourPlaceScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TourPlace"> | number
+    name?: StringWithAggregatesFilter<"TourPlace"> | string
+    description?: StringNullableWithAggregatesFilter<"TourPlace"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"TourPlace"> | string | null
+    districtId?: IntWithAggregatesFilter<"TourPlace"> | number
+    addedBy?: IntNullableWithAggregatesFilter<"TourPlace"> | number | null
+  }
+
+  export type TourPlaceReviewCreateInput = {
+    userId: number
+    rating: number
+    comment?: string | null
+    createdAt?: Date | string
+    tourPlace: TourPlaceCreateNestedOneWithoutTourPlaceReviewsInput
+  }
+
+  export type TourPlaceReviewUncheckedCreateInput = {
+    id?: number
+    userId: number
+    tourPlaceId: number
+    rating: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type TourPlaceReviewUpdateInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tourPlace?: TourPlaceUpdateOneRequiredWithoutTourPlaceReviewsNestedInput
+  }
+
+  export type TourPlaceReviewUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    tourPlaceId?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TourPlaceReviewCreateManyInput = {
+    id?: number
+    userId: number
+    tourPlaceId: number
+    rating: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type TourPlaceReviewUpdateManyMutationInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TourPlaceReviewUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    tourPlaceId?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -14958,6 +20159,147 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DivisionCreateInput = {
+    name: string
+    districts?: DistrictCreateNestedManyWithoutDivisionInput
+  }
+
+  export type DivisionUncheckedCreateInput = {
+    id?: number
+    name: string
+    districts?: DistrictUncheckedCreateNestedManyWithoutDivisionInput
+  }
+
+  export type DivisionUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    districts?: DistrictUpdateManyWithoutDivisionNestedInput
+  }
+
+  export type DivisionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    districts?: DistrictUncheckedUpdateManyWithoutDivisionNestedInput
+  }
+
+  export type DivisionCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type DivisionUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DivisionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DistrictCreateInput = {
+    name: string
+    division: DivisionCreateNestedOneWithoutDistrictsInput
+    tourPlaces?: TourPlaceCreateNestedManyWithoutDistrictInput
+  }
+
+  export type DistrictUncheckedCreateInput = {
+    id?: number
+    name: string
+    divisionId: number
+    tourPlaces?: TourPlaceUncheckedCreateNestedManyWithoutDistrictInput
+  }
+
+  export type DistrictUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    division?: DivisionUpdateOneRequiredWithoutDistrictsNestedInput
+    tourPlaces?: TourPlaceUpdateManyWithoutDistrictNestedInput
+  }
+
+  export type DistrictUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    divisionId?: IntFieldUpdateOperationsInput | number
+    tourPlaces?: TourPlaceUncheckedUpdateManyWithoutDistrictNestedInput
+  }
+
+  export type DistrictCreateManyInput = {
+    id?: number
+    name: string
+    divisionId: number
+  }
+
+  export type DistrictUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DistrictUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    divisionId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TourPlaceCreateInput = {
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    addedBy?: number | null
+    district: DistrictCreateNestedOneWithoutTourPlacesInput
+    tourPlaceReviews?: TourPlaceReviewCreateNestedManyWithoutTourPlaceInput
+  }
+
+  export type TourPlaceUncheckedCreateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    districtId: number
+    addedBy?: number | null
+    tourPlaceReviews?: TourPlaceReviewUncheckedCreateNestedManyWithoutTourPlaceInput
+  }
+
+  export type TourPlaceUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    district?: DistrictUpdateOneRequiredWithoutTourPlacesNestedInput
+    tourPlaceReviews?: TourPlaceReviewUpdateManyWithoutTourPlaceNestedInput
+  }
+
+  export type TourPlaceUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    districtId?: IntFieldUpdateOperationsInput | number
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    tourPlaceReviews?: TourPlaceReviewUncheckedUpdateManyWithoutTourPlaceNestedInput
+  }
+
+  export type TourPlaceCreateManyInput = {
+    id?: number
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    districtId: number
+    addedBy?: number | null
+  }
+
+  export type TourPlaceUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type TourPlaceUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    districtId?: IntFieldUpdateOperationsInput | number
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -14967,21 +20309,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -15010,6 +20337,120 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type TourPlaceScalarRelationFilter = {
+    is?: TourPlaceWhereInput
+    isNot?: TourPlaceWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type TourPlaceReviewCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tourPlaceId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TourPlaceReviewAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tourPlaceId?: SortOrder
+    rating?: SortOrder
+  }
+
+  export type TourPlaceReviewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tourPlaceId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TourPlaceReviewMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tourPlaceId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TourPlaceReviewSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tourPlaceId?: SortOrder
+    rating?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
   export type BookingListRelationFilter = {
     every?: BookingWhereInput
     some?: BookingWhereInput
@@ -15020,11 +20461,6 @@ export namespace Prisma {
     every?: ReviewWhereInput
     some?: ReviewWhereInput
     none?: ReviewWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type BookingOrderByRelationAggregateInput = {
@@ -15073,22 +20509,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -15105,38 +20525,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type TourListRelationFilter = {
@@ -15696,6 +21084,166 @@ export namespace Prisma {
     rating?: SortOrder
   }
 
+  export type DistrictListRelationFilter = {
+    every?: DistrictWhereInput
+    some?: DistrictWhereInput
+    none?: DistrictWhereInput
+  }
+
+  export type DistrictOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DivisionCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type DivisionAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DivisionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type DivisionMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type DivisionSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DivisionScalarRelationFilter = {
+    is?: DivisionWhereInput
+    isNot?: DivisionWhereInput
+  }
+
+  export type TourPlaceListRelationFilter = {
+    every?: TourPlaceWhereInput
+    some?: TourPlaceWhereInput
+    none?: TourPlaceWhereInput
+  }
+
+  export type TourPlaceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DistrictCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    divisionId?: SortOrder
+  }
+
+  export type DistrictAvgOrderByAggregateInput = {
+    id?: SortOrder
+    divisionId?: SortOrder
+  }
+
+  export type DistrictMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    divisionId?: SortOrder
+  }
+
+  export type DistrictMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    divisionId?: SortOrder
+  }
+
+  export type DistrictSumOrderByAggregateInput = {
+    id?: SortOrder
+    divisionId?: SortOrder
+  }
+
+  export type DistrictScalarRelationFilter = {
+    is?: DistrictWhereInput
+    isNot?: DistrictWhereInput
+  }
+
+  export type TourPlaceReviewListRelationFilter = {
+    every?: TourPlaceReviewWhereInput
+    some?: TourPlaceReviewWhereInput
+    none?: TourPlaceReviewWhereInput
+  }
+
+  export type TourPlaceReviewOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TourPlaceCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    districtId?: SortOrder
+    addedBy?: SortOrder
+  }
+
+  export type TourPlaceAvgOrderByAggregateInput = {
+    id?: SortOrder
+    districtId?: SortOrder
+    addedBy?: SortOrder
+  }
+
+  export type TourPlaceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    districtId?: SortOrder
+    addedBy?: SortOrder
+  }
+
+  export type TourPlaceMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    districtId?: SortOrder
+    addedBy?: SortOrder
+  }
+
+  export type TourPlaceSumOrderByAggregateInput = {
+    id?: SortOrder
+    districtId?: SortOrder
+    addedBy?: SortOrder
+  }
+
+  export type TourPlaceCreateNestedOneWithoutTourPlaceReviewsInput = {
+    create?: XOR<TourPlaceCreateWithoutTourPlaceReviewsInput, TourPlaceUncheckedCreateWithoutTourPlaceReviewsInput>
+    connectOrCreate?: TourPlaceCreateOrConnectWithoutTourPlaceReviewsInput
+    connect?: TourPlaceWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type TourPlaceUpdateOneRequiredWithoutTourPlaceReviewsNestedInput = {
+    create?: XOR<TourPlaceCreateWithoutTourPlaceReviewsInput, TourPlaceUncheckedCreateWithoutTourPlaceReviewsInput>
+    connectOrCreate?: TourPlaceCreateOrConnectWithoutTourPlaceReviewsInput
+    upsert?: TourPlaceUpsertWithoutTourPlaceReviewsInput
+    connect?: TourPlaceWhereUniqueInput
+    update?: XOR<XOR<TourPlaceUpdateToOneWithWhereWithoutTourPlaceReviewsInput, TourPlaceUpdateWithoutTourPlaceReviewsInput>, TourPlaceUncheckedUpdateWithoutTourPlaceReviewsInput>
+  }
+
   export type BookingCreateNestedManyWithoutUserInput = {
     create?: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput> | BookingCreateWithoutUserInput[] | BookingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
@@ -15728,14 +21276,6 @@ export namespace Prisma {
     set?: string
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
   export type BookingUpdateManyWithoutUserNestedInput = {
     create?: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput> | BookingCreateWithoutUserInput[] | BookingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
@@ -15762,14 +21302,6 @@ export namespace Prisma {
     update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type BookingUncheckedUpdateManyWithoutUserNestedInput = {
@@ -16334,6 +21866,160 @@ export namespace Prisma {
     update?: XOR<XOR<TourUpdateToOneWithWhereWithoutReviewsInput, TourUpdateWithoutReviewsInput>, TourUncheckedUpdateWithoutReviewsInput>
   }
 
+  export type DistrictCreateNestedManyWithoutDivisionInput = {
+    create?: XOR<DistrictCreateWithoutDivisionInput, DistrictUncheckedCreateWithoutDivisionInput> | DistrictCreateWithoutDivisionInput[] | DistrictUncheckedCreateWithoutDivisionInput[]
+    connectOrCreate?: DistrictCreateOrConnectWithoutDivisionInput | DistrictCreateOrConnectWithoutDivisionInput[]
+    createMany?: DistrictCreateManyDivisionInputEnvelope
+    connect?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+  }
+
+  export type DistrictUncheckedCreateNestedManyWithoutDivisionInput = {
+    create?: XOR<DistrictCreateWithoutDivisionInput, DistrictUncheckedCreateWithoutDivisionInput> | DistrictCreateWithoutDivisionInput[] | DistrictUncheckedCreateWithoutDivisionInput[]
+    connectOrCreate?: DistrictCreateOrConnectWithoutDivisionInput | DistrictCreateOrConnectWithoutDivisionInput[]
+    createMany?: DistrictCreateManyDivisionInputEnvelope
+    connect?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+  }
+
+  export type DistrictUpdateManyWithoutDivisionNestedInput = {
+    create?: XOR<DistrictCreateWithoutDivisionInput, DistrictUncheckedCreateWithoutDivisionInput> | DistrictCreateWithoutDivisionInput[] | DistrictUncheckedCreateWithoutDivisionInput[]
+    connectOrCreate?: DistrictCreateOrConnectWithoutDivisionInput | DistrictCreateOrConnectWithoutDivisionInput[]
+    upsert?: DistrictUpsertWithWhereUniqueWithoutDivisionInput | DistrictUpsertWithWhereUniqueWithoutDivisionInput[]
+    createMany?: DistrictCreateManyDivisionInputEnvelope
+    set?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+    disconnect?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+    delete?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+    connect?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+    update?: DistrictUpdateWithWhereUniqueWithoutDivisionInput | DistrictUpdateWithWhereUniqueWithoutDivisionInput[]
+    updateMany?: DistrictUpdateManyWithWhereWithoutDivisionInput | DistrictUpdateManyWithWhereWithoutDivisionInput[]
+    deleteMany?: DistrictScalarWhereInput | DistrictScalarWhereInput[]
+  }
+
+  export type DistrictUncheckedUpdateManyWithoutDivisionNestedInput = {
+    create?: XOR<DistrictCreateWithoutDivisionInput, DistrictUncheckedCreateWithoutDivisionInput> | DistrictCreateWithoutDivisionInput[] | DistrictUncheckedCreateWithoutDivisionInput[]
+    connectOrCreate?: DistrictCreateOrConnectWithoutDivisionInput | DistrictCreateOrConnectWithoutDivisionInput[]
+    upsert?: DistrictUpsertWithWhereUniqueWithoutDivisionInput | DistrictUpsertWithWhereUniqueWithoutDivisionInput[]
+    createMany?: DistrictCreateManyDivisionInputEnvelope
+    set?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+    disconnect?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+    delete?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+    connect?: DistrictWhereUniqueInput | DistrictWhereUniqueInput[]
+    update?: DistrictUpdateWithWhereUniqueWithoutDivisionInput | DistrictUpdateWithWhereUniqueWithoutDivisionInput[]
+    updateMany?: DistrictUpdateManyWithWhereWithoutDivisionInput | DistrictUpdateManyWithWhereWithoutDivisionInput[]
+    deleteMany?: DistrictScalarWhereInput | DistrictScalarWhereInput[]
+  }
+
+  export type DivisionCreateNestedOneWithoutDistrictsInput = {
+    create?: XOR<DivisionCreateWithoutDistrictsInput, DivisionUncheckedCreateWithoutDistrictsInput>
+    connectOrCreate?: DivisionCreateOrConnectWithoutDistrictsInput
+    connect?: DivisionWhereUniqueInput
+  }
+
+  export type TourPlaceCreateNestedManyWithoutDistrictInput = {
+    create?: XOR<TourPlaceCreateWithoutDistrictInput, TourPlaceUncheckedCreateWithoutDistrictInput> | TourPlaceCreateWithoutDistrictInput[] | TourPlaceUncheckedCreateWithoutDistrictInput[]
+    connectOrCreate?: TourPlaceCreateOrConnectWithoutDistrictInput | TourPlaceCreateOrConnectWithoutDistrictInput[]
+    createMany?: TourPlaceCreateManyDistrictInputEnvelope
+    connect?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+  }
+
+  export type TourPlaceUncheckedCreateNestedManyWithoutDistrictInput = {
+    create?: XOR<TourPlaceCreateWithoutDistrictInput, TourPlaceUncheckedCreateWithoutDistrictInput> | TourPlaceCreateWithoutDistrictInput[] | TourPlaceUncheckedCreateWithoutDistrictInput[]
+    connectOrCreate?: TourPlaceCreateOrConnectWithoutDistrictInput | TourPlaceCreateOrConnectWithoutDistrictInput[]
+    createMany?: TourPlaceCreateManyDistrictInputEnvelope
+    connect?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+  }
+
+  export type DivisionUpdateOneRequiredWithoutDistrictsNestedInput = {
+    create?: XOR<DivisionCreateWithoutDistrictsInput, DivisionUncheckedCreateWithoutDistrictsInput>
+    connectOrCreate?: DivisionCreateOrConnectWithoutDistrictsInput
+    upsert?: DivisionUpsertWithoutDistrictsInput
+    connect?: DivisionWhereUniqueInput
+    update?: XOR<XOR<DivisionUpdateToOneWithWhereWithoutDistrictsInput, DivisionUpdateWithoutDistrictsInput>, DivisionUncheckedUpdateWithoutDistrictsInput>
+  }
+
+  export type TourPlaceUpdateManyWithoutDistrictNestedInput = {
+    create?: XOR<TourPlaceCreateWithoutDistrictInput, TourPlaceUncheckedCreateWithoutDistrictInput> | TourPlaceCreateWithoutDistrictInput[] | TourPlaceUncheckedCreateWithoutDistrictInput[]
+    connectOrCreate?: TourPlaceCreateOrConnectWithoutDistrictInput | TourPlaceCreateOrConnectWithoutDistrictInput[]
+    upsert?: TourPlaceUpsertWithWhereUniqueWithoutDistrictInput | TourPlaceUpsertWithWhereUniqueWithoutDistrictInput[]
+    createMany?: TourPlaceCreateManyDistrictInputEnvelope
+    set?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+    disconnect?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+    delete?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+    connect?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+    update?: TourPlaceUpdateWithWhereUniqueWithoutDistrictInput | TourPlaceUpdateWithWhereUniqueWithoutDistrictInput[]
+    updateMany?: TourPlaceUpdateManyWithWhereWithoutDistrictInput | TourPlaceUpdateManyWithWhereWithoutDistrictInput[]
+    deleteMany?: TourPlaceScalarWhereInput | TourPlaceScalarWhereInput[]
+  }
+
+  export type TourPlaceUncheckedUpdateManyWithoutDistrictNestedInput = {
+    create?: XOR<TourPlaceCreateWithoutDistrictInput, TourPlaceUncheckedCreateWithoutDistrictInput> | TourPlaceCreateWithoutDistrictInput[] | TourPlaceUncheckedCreateWithoutDistrictInput[]
+    connectOrCreate?: TourPlaceCreateOrConnectWithoutDistrictInput | TourPlaceCreateOrConnectWithoutDistrictInput[]
+    upsert?: TourPlaceUpsertWithWhereUniqueWithoutDistrictInput | TourPlaceUpsertWithWhereUniqueWithoutDistrictInput[]
+    createMany?: TourPlaceCreateManyDistrictInputEnvelope
+    set?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+    disconnect?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+    delete?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+    connect?: TourPlaceWhereUniqueInput | TourPlaceWhereUniqueInput[]
+    update?: TourPlaceUpdateWithWhereUniqueWithoutDistrictInput | TourPlaceUpdateWithWhereUniqueWithoutDistrictInput[]
+    updateMany?: TourPlaceUpdateManyWithWhereWithoutDistrictInput | TourPlaceUpdateManyWithWhereWithoutDistrictInput[]
+    deleteMany?: TourPlaceScalarWhereInput | TourPlaceScalarWhereInput[]
+  }
+
+  export type DistrictCreateNestedOneWithoutTourPlacesInput = {
+    create?: XOR<DistrictCreateWithoutTourPlacesInput, DistrictUncheckedCreateWithoutTourPlacesInput>
+    connectOrCreate?: DistrictCreateOrConnectWithoutTourPlacesInput
+    connect?: DistrictWhereUniqueInput
+  }
+
+  export type TourPlaceReviewCreateNestedManyWithoutTourPlaceInput = {
+    create?: XOR<TourPlaceReviewCreateWithoutTourPlaceInput, TourPlaceReviewUncheckedCreateWithoutTourPlaceInput> | TourPlaceReviewCreateWithoutTourPlaceInput[] | TourPlaceReviewUncheckedCreateWithoutTourPlaceInput[]
+    connectOrCreate?: TourPlaceReviewCreateOrConnectWithoutTourPlaceInput | TourPlaceReviewCreateOrConnectWithoutTourPlaceInput[]
+    createMany?: TourPlaceReviewCreateManyTourPlaceInputEnvelope
+    connect?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+  }
+
+  export type TourPlaceReviewUncheckedCreateNestedManyWithoutTourPlaceInput = {
+    create?: XOR<TourPlaceReviewCreateWithoutTourPlaceInput, TourPlaceReviewUncheckedCreateWithoutTourPlaceInput> | TourPlaceReviewCreateWithoutTourPlaceInput[] | TourPlaceReviewUncheckedCreateWithoutTourPlaceInput[]
+    connectOrCreate?: TourPlaceReviewCreateOrConnectWithoutTourPlaceInput | TourPlaceReviewCreateOrConnectWithoutTourPlaceInput[]
+    createMany?: TourPlaceReviewCreateManyTourPlaceInputEnvelope
+    connect?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+  }
+
+  export type DistrictUpdateOneRequiredWithoutTourPlacesNestedInput = {
+    create?: XOR<DistrictCreateWithoutTourPlacesInput, DistrictUncheckedCreateWithoutTourPlacesInput>
+    connectOrCreate?: DistrictCreateOrConnectWithoutTourPlacesInput
+    upsert?: DistrictUpsertWithoutTourPlacesInput
+    connect?: DistrictWhereUniqueInput
+    update?: XOR<XOR<DistrictUpdateToOneWithWhereWithoutTourPlacesInput, DistrictUpdateWithoutTourPlacesInput>, DistrictUncheckedUpdateWithoutTourPlacesInput>
+  }
+
+  export type TourPlaceReviewUpdateManyWithoutTourPlaceNestedInput = {
+    create?: XOR<TourPlaceReviewCreateWithoutTourPlaceInput, TourPlaceReviewUncheckedCreateWithoutTourPlaceInput> | TourPlaceReviewCreateWithoutTourPlaceInput[] | TourPlaceReviewUncheckedCreateWithoutTourPlaceInput[]
+    connectOrCreate?: TourPlaceReviewCreateOrConnectWithoutTourPlaceInput | TourPlaceReviewCreateOrConnectWithoutTourPlaceInput[]
+    upsert?: TourPlaceReviewUpsertWithWhereUniqueWithoutTourPlaceInput | TourPlaceReviewUpsertWithWhereUniqueWithoutTourPlaceInput[]
+    createMany?: TourPlaceReviewCreateManyTourPlaceInputEnvelope
+    set?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+    disconnect?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+    delete?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+    connect?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+    update?: TourPlaceReviewUpdateWithWhereUniqueWithoutTourPlaceInput | TourPlaceReviewUpdateWithWhereUniqueWithoutTourPlaceInput[]
+    updateMany?: TourPlaceReviewUpdateManyWithWhereWithoutTourPlaceInput | TourPlaceReviewUpdateManyWithWhereWithoutTourPlaceInput[]
+    deleteMany?: TourPlaceReviewScalarWhereInput | TourPlaceReviewScalarWhereInput[]
+  }
+
+  export type TourPlaceReviewUncheckedUpdateManyWithoutTourPlaceNestedInput = {
+    create?: XOR<TourPlaceReviewCreateWithoutTourPlaceInput, TourPlaceReviewUncheckedCreateWithoutTourPlaceInput> | TourPlaceReviewCreateWithoutTourPlaceInput[] | TourPlaceReviewUncheckedCreateWithoutTourPlaceInput[]
+    connectOrCreate?: TourPlaceReviewCreateOrConnectWithoutTourPlaceInput | TourPlaceReviewCreateOrConnectWithoutTourPlaceInput[]
+    upsert?: TourPlaceReviewUpsertWithWhereUniqueWithoutTourPlaceInput | TourPlaceReviewUpsertWithWhereUniqueWithoutTourPlaceInput[]
+    createMany?: TourPlaceReviewCreateManyTourPlaceInputEnvelope
+    set?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+    disconnect?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+    delete?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+    connect?: TourPlaceReviewWhereUniqueInput | TourPlaceReviewWhereUniqueInput[]
+    update?: TourPlaceReviewUpdateWithWhereUniqueWithoutTourPlaceInput | TourPlaceReviewUpdateWithWhereUniqueWithoutTourPlaceInput[]
+    updateMany?: TourPlaceReviewUpdateManyWithWhereWithoutTourPlaceInput | TourPlaceReviewUpdateManyWithWhereWithoutTourPlaceInput[]
+    deleteMany?: TourPlaceReviewScalarWhereInput | TourPlaceReviewScalarWhereInput[]
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -16343,20 +22029,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -16411,23 +22083,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -16468,6 +22123,37 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -16569,6 +22255,56 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumBookingStatusFilter<$PrismaModel>
     _max?: NestedEnumBookingStatusFilter<$PrismaModel>
+  }
+
+  export type TourPlaceCreateWithoutTourPlaceReviewsInput = {
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    addedBy?: number | null
+    district: DistrictCreateNestedOneWithoutTourPlacesInput
+  }
+
+  export type TourPlaceUncheckedCreateWithoutTourPlaceReviewsInput = {
+    id?: number
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    districtId: number
+    addedBy?: number | null
+  }
+
+  export type TourPlaceCreateOrConnectWithoutTourPlaceReviewsInput = {
+    where: TourPlaceWhereUniqueInput
+    create: XOR<TourPlaceCreateWithoutTourPlaceReviewsInput, TourPlaceUncheckedCreateWithoutTourPlaceReviewsInput>
+  }
+
+  export type TourPlaceUpsertWithoutTourPlaceReviewsInput = {
+    update: XOR<TourPlaceUpdateWithoutTourPlaceReviewsInput, TourPlaceUncheckedUpdateWithoutTourPlaceReviewsInput>
+    create: XOR<TourPlaceCreateWithoutTourPlaceReviewsInput, TourPlaceUncheckedCreateWithoutTourPlaceReviewsInput>
+    where?: TourPlaceWhereInput
+  }
+
+  export type TourPlaceUpdateToOneWithWhereWithoutTourPlaceReviewsInput = {
+    where?: TourPlaceWhereInput
+    data: XOR<TourPlaceUpdateWithoutTourPlaceReviewsInput, TourPlaceUncheckedUpdateWithoutTourPlaceReviewsInput>
+  }
+
+  export type TourPlaceUpdateWithoutTourPlaceReviewsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    district?: DistrictUpdateOneRequiredWithoutTourPlacesNestedInput
+  }
+
+  export type TourPlaceUncheckedUpdateWithoutTourPlaceReviewsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    districtId?: IntFieldUpdateOperationsInput | number
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type BookingCreateWithoutUserInput = {
@@ -17925,6 +23661,232 @@ export namespace Prisma {
     bookings?: BookingUncheckedUpdateManyWithoutTourNestedInput
   }
 
+  export type DistrictCreateWithoutDivisionInput = {
+    name: string
+    tourPlaces?: TourPlaceCreateNestedManyWithoutDistrictInput
+  }
+
+  export type DistrictUncheckedCreateWithoutDivisionInput = {
+    id?: number
+    name: string
+    tourPlaces?: TourPlaceUncheckedCreateNestedManyWithoutDistrictInput
+  }
+
+  export type DistrictCreateOrConnectWithoutDivisionInput = {
+    where: DistrictWhereUniqueInput
+    create: XOR<DistrictCreateWithoutDivisionInput, DistrictUncheckedCreateWithoutDivisionInput>
+  }
+
+  export type DistrictCreateManyDivisionInputEnvelope = {
+    data: DistrictCreateManyDivisionInput | DistrictCreateManyDivisionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DistrictUpsertWithWhereUniqueWithoutDivisionInput = {
+    where: DistrictWhereUniqueInput
+    update: XOR<DistrictUpdateWithoutDivisionInput, DistrictUncheckedUpdateWithoutDivisionInput>
+    create: XOR<DistrictCreateWithoutDivisionInput, DistrictUncheckedCreateWithoutDivisionInput>
+  }
+
+  export type DistrictUpdateWithWhereUniqueWithoutDivisionInput = {
+    where: DistrictWhereUniqueInput
+    data: XOR<DistrictUpdateWithoutDivisionInput, DistrictUncheckedUpdateWithoutDivisionInput>
+  }
+
+  export type DistrictUpdateManyWithWhereWithoutDivisionInput = {
+    where: DistrictScalarWhereInput
+    data: XOR<DistrictUpdateManyMutationInput, DistrictUncheckedUpdateManyWithoutDivisionInput>
+  }
+
+  export type DistrictScalarWhereInput = {
+    AND?: DistrictScalarWhereInput | DistrictScalarWhereInput[]
+    OR?: DistrictScalarWhereInput[]
+    NOT?: DistrictScalarWhereInput | DistrictScalarWhereInput[]
+    id?: IntFilter<"District"> | number
+    name?: StringFilter<"District"> | string
+    divisionId?: IntFilter<"District"> | number
+  }
+
+  export type DivisionCreateWithoutDistrictsInput = {
+    name: string
+  }
+
+  export type DivisionUncheckedCreateWithoutDistrictsInput = {
+    id?: number
+    name: string
+  }
+
+  export type DivisionCreateOrConnectWithoutDistrictsInput = {
+    where: DivisionWhereUniqueInput
+    create: XOR<DivisionCreateWithoutDistrictsInput, DivisionUncheckedCreateWithoutDistrictsInput>
+  }
+
+  export type TourPlaceCreateWithoutDistrictInput = {
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    addedBy?: number | null
+    tourPlaceReviews?: TourPlaceReviewCreateNestedManyWithoutTourPlaceInput
+  }
+
+  export type TourPlaceUncheckedCreateWithoutDistrictInput = {
+    id?: number
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    addedBy?: number | null
+    tourPlaceReviews?: TourPlaceReviewUncheckedCreateNestedManyWithoutTourPlaceInput
+  }
+
+  export type TourPlaceCreateOrConnectWithoutDistrictInput = {
+    where: TourPlaceWhereUniqueInput
+    create: XOR<TourPlaceCreateWithoutDistrictInput, TourPlaceUncheckedCreateWithoutDistrictInput>
+  }
+
+  export type TourPlaceCreateManyDistrictInputEnvelope = {
+    data: TourPlaceCreateManyDistrictInput | TourPlaceCreateManyDistrictInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DivisionUpsertWithoutDistrictsInput = {
+    update: XOR<DivisionUpdateWithoutDistrictsInput, DivisionUncheckedUpdateWithoutDistrictsInput>
+    create: XOR<DivisionCreateWithoutDistrictsInput, DivisionUncheckedCreateWithoutDistrictsInput>
+    where?: DivisionWhereInput
+  }
+
+  export type DivisionUpdateToOneWithWhereWithoutDistrictsInput = {
+    where?: DivisionWhereInput
+    data: XOR<DivisionUpdateWithoutDistrictsInput, DivisionUncheckedUpdateWithoutDistrictsInput>
+  }
+
+  export type DivisionUpdateWithoutDistrictsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DivisionUncheckedUpdateWithoutDistrictsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TourPlaceUpsertWithWhereUniqueWithoutDistrictInput = {
+    where: TourPlaceWhereUniqueInput
+    update: XOR<TourPlaceUpdateWithoutDistrictInput, TourPlaceUncheckedUpdateWithoutDistrictInput>
+    create: XOR<TourPlaceCreateWithoutDistrictInput, TourPlaceUncheckedCreateWithoutDistrictInput>
+  }
+
+  export type TourPlaceUpdateWithWhereUniqueWithoutDistrictInput = {
+    where: TourPlaceWhereUniqueInput
+    data: XOR<TourPlaceUpdateWithoutDistrictInput, TourPlaceUncheckedUpdateWithoutDistrictInput>
+  }
+
+  export type TourPlaceUpdateManyWithWhereWithoutDistrictInput = {
+    where: TourPlaceScalarWhereInput
+    data: XOR<TourPlaceUpdateManyMutationInput, TourPlaceUncheckedUpdateManyWithoutDistrictInput>
+  }
+
+  export type TourPlaceScalarWhereInput = {
+    AND?: TourPlaceScalarWhereInput | TourPlaceScalarWhereInput[]
+    OR?: TourPlaceScalarWhereInput[]
+    NOT?: TourPlaceScalarWhereInput | TourPlaceScalarWhereInput[]
+    id?: IntFilter<"TourPlace"> | number
+    name?: StringFilter<"TourPlace"> | string
+    description?: StringNullableFilter<"TourPlace"> | string | null
+    imageUrl?: StringNullableFilter<"TourPlace"> | string | null
+    districtId?: IntFilter<"TourPlace"> | number
+    addedBy?: IntNullableFilter<"TourPlace"> | number | null
+  }
+
+  export type DistrictCreateWithoutTourPlacesInput = {
+    name: string
+    division: DivisionCreateNestedOneWithoutDistrictsInput
+  }
+
+  export type DistrictUncheckedCreateWithoutTourPlacesInput = {
+    id?: number
+    name: string
+    divisionId: number
+  }
+
+  export type DistrictCreateOrConnectWithoutTourPlacesInput = {
+    where: DistrictWhereUniqueInput
+    create: XOR<DistrictCreateWithoutTourPlacesInput, DistrictUncheckedCreateWithoutTourPlacesInput>
+  }
+
+  export type TourPlaceReviewCreateWithoutTourPlaceInput = {
+    userId: number
+    rating: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type TourPlaceReviewUncheckedCreateWithoutTourPlaceInput = {
+    id?: number
+    userId: number
+    rating: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type TourPlaceReviewCreateOrConnectWithoutTourPlaceInput = {
+    where: TourPlaceReviewWhereUniqueInput
+    create: XOR<TourPlaceReviewCreateWithoutTourPlaceInput, TourPlaceReviewUncheckedCreateWithoutTourPlaceInput>
+  }
+
+  export type TourPlaceReviewCreateManyTourPlaceInputEnvelope = {
+    data: TourPlaceReviewCreateManyTourPlaceInput | TourPlaceReviewCreateManyTourPlaceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DistrictUpsertWithoutTourPlacesInput = {
+    update: XOR<DistrictUpdateWithoutTourPlacesInput, DistrictUncheckedUpdateWithoutTourPlacesInput>
+    create: XOR<DistrictCreateWithoutTourPlacesInput, DistrictUncheckedCreateWithoutTourPlacesInput>
+    where?: DistrictWhereInput
+  }
+
+  export type DistrictUpdateToOneWithWhereWithoutTourPlacesInput = {
+    where?: DistrictWhereInput
+    data: XOR<DistrictUpdateWithoutTourPlacesInput, DistrictUncheckedUpdateWithoutTourPlacesInput>
+  }
+
+  export type DistrictUpdateWithoutTourPlacesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    division?: DivisionUpdateOneRequiredWithoutDistrictsNestedInput
+  }
+
+  export type DistrictUncheckedUpdateWithoutTourPlacesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    divisionId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TourPlaceReviewUpsertWithWhereUniqueWithoutTourPlaceInput = {
+    where: TourPlaceReviewWhereUniqueInput
+    update: XOR<TourPlaceReviewUpdateWithoutTourPlaceInput, TourPlaceReviewUncheckedUpdateWithoutTourPlaceInput>
+    create: XOR<TourPlaceReviewCreateWithoutTourPlaceInput, TourPlaceReviewUncheckedCreateWithoutTourPlaceInput>
+  }
+
+  export type TourPlaceReviewUpdateWithWhereUniqueWithoutTourPlaceInput = {
+    where: TourPlaceReviewWhereUniqueInput
+    data: XOR<TourPlaceReviewUpdateWithoutTourPlaceInput, TourPlaceReviewUncheckedUpdateWithoutTourPlaceInput>
+  }
+
+  export type TourPlaceReviewUpdateManyWithWhereWithoutTourPlaceInput = {
+    where: TourPlaceReviewScalarWhereInput
+    data: XOR<TourPlaceReviewUpdateManyMutationInput, TourPlaceReviewUncheckedUpdateManyWithoutTourPlaceInput>
+  }
+
+  export type TourPlaceReviewScalarWhereInput = {
+    AND?: TourPlaceReviewScalarWhereInput | TourPlaceReviewScalarWhereInput[]
+    OR?: TourPlaceReviewScalarWhereInput[]
+    NOT?: TourPlaceReviewScalarWhereInput | TourPlaceReviewScalarWhereInput[]
+    id?: IntFilter<"TourPlaceReview"> | number
+    userId?: IntFilter<"TourPlaceReview"> | number
+    tourPlaceId?: IntFilter<"TourPlaceReview"> | number
+    rating?: IntFilter<"TourPlaceReview"> | number
+    comment?: StringNullableFilter<"TourPlaceReview"> | string | null
+    createdAt?: DateTimeFilter<"TourPlaceReview"> | Date | string
+  }
+
   export type BookingCreateManyUserInput = {
     id?: number
     tourId: number
@@ -18386,6 +24348,91 @@ export namespace Prisma {
     currency?: StringFieldUpdateOperationsInput | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
     bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DistrictCreateManyDivisionInput = {
+    id?: number
+    name: string
+  }
+
+  export type DistrictUpdateWithoutDivisionInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    tourPlaces?: TourPlaceUpdateManyWithoutDistrictNestedInput
+  }
+
+  export type DistrictUncheckedUpdateWithoutDivisionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    tourPlaces?: TourPlaceUncheckedUpdateManyWithoutDistrictNestedInput
+  }
+
+  export type DistrictUncheckedUpdateManyWithoutDivisionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TourPlaceCreateManyDistrictInput = {
+    id?: number
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    addedBy?: number | null
+  }
+
+  export type TourPlaceUpdateWithoutDistrictInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    tourPlaceReviews?: TourPlaceReviewUpdateManyWithoutTourPlaceNestedInput
+  }
+
+  export type TourPlaceUncheckedUpdateWithoutDistrictInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    tourPlaceReviews?: TourPlaceReviewUncheckedUpdateManyWithoutTourPlaceNestedInput
+  }
+
+  export type TourPlaceUncheckedUpdateManyWithoutDistrictInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    addedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type TourPlaceReviewCreateManyTourPlaceInput = {
+    id?: number
+    userId: number
+    rating: number
+    comment?: string | null
+    createdAt?: Date | string
+  }
+
+  export type TourPlaceReviewUpdateWithoutTourPlaceInput = {
+    userId?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TourPlaceReviewUncheckedUpdateWithoutTourPlaceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TourPlaceReviewUncheckedUpdateManyWithoutTourPlaceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

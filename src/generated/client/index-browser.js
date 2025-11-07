@@ -121,6 +121,15 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.TourPlaceReviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tourPlaceId: 'tourPlaceId',
+  rating: 'rating',
+  comment: 'comment',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -214,6 +223,26 @@ exports.Prisma.ReviewScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.DivisionScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.DistrictScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  divisionId: 'divisionId'
+};
+
+exports.Prisma.TourPlaceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  districtId: 'districtId',
+  addedBy: 'addedBy'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -235,6 +264,7 @@ exports.BookingStatus = exports.$Enums.BookingStatus = {
 };
 
 exports.Prisma.ModelName = {
+  TourPlaceReview: 'TourPlaceReview',
   User: 'User',
   Operator: 'Operator',
   Location: 'Location',
@@ -244,7 +274,10 @@ exports.Prisma.ModelName = {
   PriceOption: 'PriceOption',
   Image: 'Image',
   Booking: 'Booking',
-  Review: 'Review'
+  Review: 'Review',
+  Division: 'Division',
+  District: 'District',
+  TourPlace: 'TourPlace'
 };
 
 /**

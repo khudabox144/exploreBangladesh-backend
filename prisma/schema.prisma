@@ -1,3 +1,12 @@
+model TourPlaceReview {
+  id          Int        @id @default(autoincrement())
+  userId      Int
+  tourPlace   TourPlace  @relation(fields: [tourPlaceId], references: [id])
+  tourPlaceId Int
+  rating      Int
+  comment     String?
+  createdAt   DateTime   @default(now())
+}
 // ✅ CORRECTED prisma/schema.prisma CONTENT ✅
 
 // This is your Prisma schema file,
@@ -6,15 +15,14 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// prisma/schema.prisma - CORRECTED
 generator client {
-  // 💡 The 'output' property belongs HERE
-  provider = "prisma-client-js" // Use prisma-client-js, not just prisma-client
-  output   = "../src/generated/client" 
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client" // Standard output path
 }
 
 datasource db {
   provider = "postgresql"
-  // ❌ REMOVE 'output' FROM HERE! (Lines 13-15 in your error output)
   url      = env("DATABASE_URL")
 }
 
@@ -128,6 +136,7 @@ model Booking {
   bookedAt   DateTime      @default(now())
 }
 
+
 model Review {
   id        Int      @id @default(autoincrement())
   user      User     @relation(fields: [userId], references: [id])
@@ -138,4 +147,30 @@ model Review {
   title     String?
   text      String?
   createdAt DateTime @default(now())
+}
+
+// Bangladesh Destinations
+model Division {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  districts District[]
+}
+
+model District {
+  id         Int        @id @default(autoincrement())
+  name       String
+  division   Division   @relation(fields: [divisionId], references: [id])
+  divisionId Int
+  tourPlaces TourPlace[]
+}
+
+model TourPlace {
+  id         Int      @id @default(autoincrement())
+  name       String
+  description String?
+  imageUrl   String?
+  district   District @relation(fields: [districtId], references: [id])
+  districtId Int
+  addedBy    Int?
+  tourPlaceReviews TourPlaceReview[]
 }
