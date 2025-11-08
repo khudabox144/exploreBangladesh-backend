@@ -1,33 +1,48 @@
+// src/routes/trendingPlaces.js
 import express from 'express';
 import prisma from '../db.js';
 
 const router = express.Router();
 
-// Get trending places (top by average rating)
+// Get trending tour places (most reviewed or highest rated)
 router.get('/', async (req, res) => {
-  const limit = Number(req.query.limit) || 10;
   try {
-    // Aggregate average rating and review count for each TourPlace
-    const trending = await prisma.tourPlace.findMany({
+    const tourPlaces = await prisma.tourPlace.findMany({
       include: {
+        district: {
+          include: {
+            division: true
+          }
+        },
         tourPlaceReviews: true
-      }
+      },
+      orderBy: {
+        tourPlaceReviews: {
+          _count: 'desc'
+        }
+      },
+      take: 10 // Get top 10 trending
     });
 
-    // Calculate average rating and sort
-    const sorted = trending
-      .map(tp => {
-        const reviews = tp.tourPlaceReviews;
-        const avgRating = reviews.length
-          ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-          : 0;
-        return { ...tp, avgRating, reviewCount: reviews.length };
-      })
-      .sort((a, b) => b.avgRating - a.avgRating)
-      .slice(0, limit);
+    const transformedTourPlaces = tourPlaces.map(place => ({
+      id: place.id,
+      name: place.name,
+      price: 50,
+      currency: 'USD',
+      duration: 1,
+      difficulty: 'Easy',
+      rating: place.tourPlaceReviews.length > 0 
+        ? place.tourPlaceReviews.reduce((sum, review) => sum + review.rating, 0) / place.tourPlaceReviews.length 
+        : 4.0,
+      image: place.imageUrl || '/placeholder-image.jpg',
+      location: `${place.district.name}, ${place.district.division.name}`,
+      description: place.description || 'Explore this beautiful tourist destination.',
+      reviewCount: place.tourPlaceReviews.length
+    }));
 
-    res.json(sorted);
+    res.json(transformedTourPlaces);
   } catch (err) {
+    console.error('Error fetching trending places:', err);
     res.status(500).json({ error: 'Failed to fetch trending places' });
   }
 });

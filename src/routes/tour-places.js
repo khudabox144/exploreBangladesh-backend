@@ -11,83 +11,112 @@ router.get('/', async (req, res) => {
     let whereClause = {};
     
     if (division && district) {
-      // Find tours by division and district name
+      // Find tour places by division and district name
       whereClause = {
-        location: {
-          district: {
-            name: { contains: district, mode: 'insensitive' },
-            division: {
-              name: { contains: division, mode: 'insensitive' }
-            }
+        district: {
+          name: { contains: district, mode: 'insensitive' },
+          division: {
+            name: { contains: division, mode: 'insensitive' }
           }
         }
       };
     } else if (division) {
-      // Find tours by division only
+      // Find tour places by division only
       whereClause = {
-        location: {
-          district: {
-            division: {
-              name: { contains: division, mode: 'insensitive' }
-            }
+        district: {
+          division: {
+            name: { contains: division, mode: 'insensitive' }
           }
         }
       };
     } else if (district) {
-      // Find tours by district only
+      // Find tour places by district only
       whereClause = {
-        location: {
-          district: {
-            name: { contains: district, mode: 'insensitive' }
-          }
+        district: {
+          name: { contains: district, mode: 'insensitive' }
         }
       };
     }
 
-    const tourPlaces = await prisma.tour.findMany({
+    const tourPlaces = await prisma.tourPlace.findMany({
       where: whereClause,
       include: {
-        images: true,
-        location: {
+        district: {
           include: {
-            district: {
-              include: {
-                division: true
-              }
-            }
+            division: true
           }
         },
-        operator: true,
-        priceOptions: true,
-        categories: true,
-        reviews: true,
+        tourPlaceReviews: true
       },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { name: 'asc' },
     });
 
     // Transform data to match frontend expectations
-    const transformedTours = tourPlaces.map(tour => ({
-      id: tour.id,
-      name: tour.title,
-      price: tour.basePrice,
-      currency: tour.currency,
-      duration: tour.durationDays,
-      difficulty: tour.categories[0]?.name || 'Medium', // Use first category as difficulty
-      rating: tour.reviews.length > 0 
-        ? tour.reviews.reduce((sum, review) => sum + review.rating, 0) / tour.reviews.length 
+    const transformedTourPlaces = tourPlaces.map(place => ({
+      id: place.id,
+      name: place.name,
+      price: 50, // Default price since it's not in TourPlace model
+      currency: 'USD',
+      duration: 1, // Default duration
+      difficulty: 'Easy', // Default difficulty
+      rating: place.tourPlaceReviews.length > 0 
+        ? place.tourPlaceReviews.reduce((sum, review) => sum + review.rating, 0) / place.tourPlaceReviews.length 
         : 4.0,
-      image: tour.images[0]?.url || '/placeholder-image.jpg',
-      location: tour.location?.name || 'Bangladesh',
-      description: tour.description,
-      fullDescription: tour.description, // You might want to add a separate fullDescription field
-      highlights: tour.categories.map(cat => cat.name),
-      included: ['Professional guide', 'Transportation'], // Default values
-      requirements: ['Comfortable shoes', 'Camera'] // Default values
+      image: place.imageUrl || '/placeholder-image.jpg',
+      location: `${place.district.name}, ${place.district.division.name}`,
+      description: place.description || 'Explore this beautiful tourist destination.',
+      fullDescription: place.description || 'A wonderful place to visit with rich cultural heritage and natural beauty.',
+      highlights: [
+        'Beautiful scenery',
+        'Cultural experience',
+        'Photography opportunities'
+      ],
+      included: ['Professional guide', 'Transportation'],
+      requirements: ['Comfortable shoes', 'Camera', 'Water bottle']
     }));
 
-    res.json(transformedTours);
+    res.json(transformedTourPlaces);
   } catch (err) {
     console.error('Error fetching tour places:', err);
+    res.status(500).json({ error: 'Failed to fetch tour places' });
+  }
+});
+
+// Get all tour places (optional)
+router.get('/all', async (req, res) => {
+  try {
+    const tourPlaces = await prisma.tourPlace.findMany({
+      include: {
+        district: {
+          include: {
+            division: true
+          }
+        },
+        tourPlaceReviews: true
+      },
+      orderBy: { name: 'asc' },
+    });
+
+    const transformedTourPlaces = tourPlaces.map(place => ({
+      id: place.id,
+      name: place.name,
+      price: 50,
+      currency: 'USD',
+      duration: 1,
+      difficulty: 'Easy',
+      rating: place.tourPlaceReviews.length > 0 
+        ? place.tourPlaceReviews.reduce((sum, review) => sum + review.rating, 0) / place.tourPlaceReviews.length 
+        : 4.0,
+      image: place.imageUrl || '/placeholder-image.jpg',
+      location: `${place.district.name}, ${place.district.division.name}`,
+      description: place.description || 'Explore this beautiful tourist destination.',
+      district: place.district.name,
+      division: place.district.division.name
+    }));
+
+    res.json(transformedTourPlaces);
+  } catch (err) {
+    console.error('Error fetching all tour places:', err);
     res.status(500).json({ error: 'Failed to fetch tour places' });
   }
 });

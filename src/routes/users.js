@@ -36,5 +36,15 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch user' });
   }
 });
+// GET all users
+router.get('/', async (req, res) => {
+  try {
+    const users = await prisma.user.findMany();
+    res.json(users);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
+});
 
 export default router;
