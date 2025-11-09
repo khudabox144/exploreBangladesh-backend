@@ -118,3 +118,5 @@ app.listen(PORT, () => {
   console.log(`   GET /api/districts/division/1`);
   console.log(`   POST /api/admin/tour-places - Add new tourist place`); // ADD THIS LINE
 });
+
+
